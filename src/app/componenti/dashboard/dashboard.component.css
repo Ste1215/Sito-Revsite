@@ -1,0 +1,19 @@
+.example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #eee;
+  }
+.categorie{
+background-color: rgb(0, 110, 255);
+}  
+.example-spacer {
+  flex: 1 1 auto;
+}
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+  position: absolute;
+}

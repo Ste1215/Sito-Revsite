@@ -1,0 +1,28 @@
+<mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" opened> 
+        <mat-list role="list">
+            <mat-list-item role="listitem" routerLink="categorie"  [routerLinkActive]="'categorie'">Categorie</mat-list-item>
+            <mat-list-item role="listitem" routerLink="recensioni" [routerLinkActive]="'categorie'">Recensioni</mat-list-item>
+            <mat-list-item role="listitem" routerLink="pagina3"    [routerLinkActive]="'categorie'">Pagina 3</mat-list-item>
+          </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content> 
+        <mat-toolbar color="primary">
+            <span class="example-spacer"></span>
+            <div *ngIf="authService.isAuthenticated(); else UserProfile">
+              <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="pathLogin()">
+              <mat-icon>login</mat-icon>
+              </button>
+              <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="onLogOut()">
+                 <mat-icon>logout</mat-icon></button>
+             
+          </div>
+          <ng-template #UserProfile>
+            <div>
+              <img [src]= "authService.user.profileImage || '' " alt="" class="immagine-profilo" >
+            </div>
+          </ng-template>
+          </mat-toolbar>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

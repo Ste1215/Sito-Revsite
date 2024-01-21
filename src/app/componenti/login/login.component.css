@@ -1,0 +1,28 @@
+form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+h1{
+    text-align: center;
+    display: block;
+}
+p{
+    text-align: right;
+}
+a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.example-container mat-form-field + mat-form-field {
+    margin-left: 8px;
+  }
+  
+  .example-right-align {
+    text-align: right;
+  }
+  
+  input.example-right-align::-webkit-outer-spin-button,
+  input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
