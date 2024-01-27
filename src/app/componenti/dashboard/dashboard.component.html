@@ -7,22 +7,22 @@
           </mat-list>
     </mat-sidenav>
     <mat-sidenav-content> 
-        <mat-toolbar color="primary">
+      <mat-toolbar color="primary">
             <span class="example-spacer"></span>
-            <div *ngIf="authService.isAuthenticated(); else UserProfile">
-              <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="pathLogin()">
-              <mat-icon>login</mat-icon>
+               <!--  -->
+              <!-- <img [src]="authService.user.profileImage !== null  ? authService.user.profileImage : 'assets/images/userProfilo.jpg'" alt="">  -->
+        <div class="profile-container" (click)="toggleMenu()">
+              <button mat-button [matMenuTriggerFor]="menu">
+                <img style="cursor: pointer;" [src]="authService.user.profileImage || 'assets/img/userProfilo.png'" alt="" class="immagine-profilo">
               </button>
-              <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="onLogOut()">
-                 <mat-icon>logout</mat-icon></button>
-             
-          </div>
-          <ng-template #UserProfile>
-            <div>
-              <img [src]= "authService.user.profileImage || '' " alt="" class="immagine-profilo" >
-            </div>
-          </ng-template>
-          </mat-toolbar>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="onLogOut()">
+                  <mat-icon>logout</mat-icon>
+                  <span>logout</span>
+                </button>
+              </mat-menu>
+        </div> 
+      </mat-toolbar>
         <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>

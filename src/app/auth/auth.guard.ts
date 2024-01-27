@@ -12,11 +12,10 @@ export const AuthGuard: CanActivateFn = (
   | boolean
   | UrlTree=> {
     const isAuthenticated = inject(AuthService).isAuthenticated();
-
     if (isAuthenticated) {
-      return true; 
+      return true;
     } else {
-      return inject(Router).createUrlTree(['/login']);
+      return inject(Router).createUrlTree(['/homepage']);
     }
   
 };

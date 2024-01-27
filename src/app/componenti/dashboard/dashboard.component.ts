@@ -10,11 +10,13 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { AuthService } from '../../auth/auth.service'; 
 import { CommonModule } from '@angular/common';
+import {MatMenuModule} from '@angular/material/menu';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [
     CommonModule,
+    MatMenuModule,
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
@@ -28,8 +30,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit {
-    
   constructor(public authService: AuthService, private router: Router){}
+  isMenuVisible = false;
   ngOnInit(): void {
     if( this.authService.isAuthenticated() === true){
     this.router.navigate(["/categorie"]); 
@@ -37,7 +39,12 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(["/"]);  
 }
 }
-  
+
+
+toggleMenu() {
+    this.isMenuVisible = !this.isMenuVisible;
+}
+
   onLogOut(){
     this.authService.logout();
     

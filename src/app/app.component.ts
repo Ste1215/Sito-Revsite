@@ -30,7 +30,7 @@ export class AppComponent  implements OnInit{
     if(localStorage.getItem('user')){
       const user = JSON.parse(localStorage.getItem('user'))
       console.log(user)
-      this.authService.createUser(user.email, user.id, user._token, user._expirationDate,"../../assets/images/userProfilo.jpg")
+      this.authService.createUser(user.email, user.id, user._token, user._expirationDate, 'assets/img/user.png');
     console.log(this.authService.user)
     }
   }

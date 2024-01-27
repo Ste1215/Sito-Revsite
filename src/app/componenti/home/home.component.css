@@ -7,15 +7,17 @@
     flex: 1 1 auto;
 }
   .intro-section {
-    background: url("../../assets/images/recensioni.jpg") center no-repeat;
+    background: url("../../../assets/img/recensioni.jpg")no-repeat;
     background-size: 100% ;
     text-align: center; padding:10px; margin:0px; min-height:600px; width:100%; 
-    display:flex; flex-direction:column; justify-content:center; 
-    background-position: center center; background-size:cover;
+    display:flex; flex-direction:column;
+    justify-content:center; 
+    background-position: center center; 
+    background-size:cover;
 }
   h1 {
-    color: #333;
-   font-size: 3.5rem;
+    color: #eaeaea;
+    font-size: 3.5rem;
   }
   
   p {

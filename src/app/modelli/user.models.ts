@@ -13,5 +13,4 @@ get token(){
     }
     return this._token
 }
-
 } 
