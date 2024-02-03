@@ -6,7 +6,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { AuthService } from './auth/auth.service';
-import { User } from './modelli/user.models';
+
 
 @Component({
   selector: 'app-root',

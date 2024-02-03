@@ -6,24 +6,24 @@
     right: 0;
     background: #eee;
   }
-.categorie{
-background-color: rgb(0, 153, 255);
-}  
+  .categorie{
+     cursor: pointer !important;
+  } 
 .example-spacer {
   flex: 1 1 auto;
 }
+
 .example-button-row button,
 .example-button-row a {
   margin-right: 8px;
   position: absolute;
 }
-.immagine-profilo{
-  border-radius: 50px;
-  width: 32px;
-  height: 32px;
-}
+
 
 .profile-container {
-  position: relative;
+  border-radius: 50%;
 }
-
+.profile-container img{
+  width: 42px;
+  height: 42px;
+}

@@ -23,4 +23,7 @@ export class HomeComponent {
   inLogout(){
     this.authService.logout();
   }
+  inRegister(){
+    this.authService.pathRegister();
+  }
 }

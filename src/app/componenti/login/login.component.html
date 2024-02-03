@@ -1,6 +1,6 @@
-
- <h1>Login</h1>
+ <div class="login-form">
 <form #loginform="ngForm" (ngSubmit)="onSubmit(loginform)">
+   <h1>Login</h1>
 <mat-form-field>
     <mat-label>Email</mat-label>
     <input matInput type="email" name="email" ngModel required>
@@ -11,4 +11,6 @@
   </mat-form-field>
   <button mat-button color="primary" type="submit" [disabled]="!loginform.valid">invia</button>
 </form>
-<p>non hai un account? <a (click)="atLogin()">registrati adesso</a></p>
+<p>oppure</p>
+<button mat-flat-button (click)="atLogin()">Registrati</button>
+</div>

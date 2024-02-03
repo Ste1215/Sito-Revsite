@@ -1,3 +1,7 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
 <mat-sidenav-container class="example-container">
     <mat-sidenav mode="side" opened> 
         <mat-list role="list">
@@ -9,13 +13,16 @@
     <mat-sidenav-content> 
       <mat-toolbar color="primary">
             <span class="example-spacer"></span>
-               <!--  -->
               <!-- <img [src]="authService.user.profileImage !== null  ? authService.user.profileImage : 'assets/images/userProfilo.jpg'" alt="">  -->
         <div class="profile-container" (click)="toggleMenu()">
-              <button mat-button [matMenuTriggerFor]="menu">
-                <img style="cursor: pointer;" [src]="authService.user.profileImage || 'assets/img/userProfilo.png'" alt="" class="immagine-profilo">
+              <button mat-button [matMenuTriggerFor]="menu" style="clip-path: circle(50%);" >
+                <img style="cursor: pointer;" [src]="authService.user.profileImage || 'assets/img/userProfilo.png'" alt="" >
               </button>
-              <mat-menu #menu="matMenu">
+              <mat-menu #menu="matMenu" >
+                <button mat-menu-item (click)="openDialog()">
+                  <mat-icon>settings</mat-icon>
+                  <span>Impostazioni</span>
+                </button>
                 <button mat-menu-item (click)="onLogOut()">
                   <mat-icon>logout</mat-icon>
                   <span>logout</span>

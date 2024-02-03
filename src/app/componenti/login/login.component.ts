@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
    
   }
+
   onSubmit(form: NgForm){
     const email =form.value.email
     const password =form.value.password
@@ -39,9 +40,10 @@ export class LoginComponent implements OnInit {
       this.authService.createUser(data.email, data.localId, data.idToken,data.expiresIn, './assets/images/userProfilo.jpg')
      localStorage.setItem('user',JSON.stringify(this.authService.user))
     })
-    form.reset()
+    form.reset();
   }
   atLogin(){
     this.router.navigate(['/register'])
   }
+
 }

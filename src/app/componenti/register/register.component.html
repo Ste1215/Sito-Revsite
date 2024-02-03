@@ -1,3 +1,4 @@
+<div class="login-form">
 <h1>Registrazione Utente</h1>
 <form #registerform="ngForm" (ngSubmit)="onSubmit(registerform)">
 <mat-form-field>
@@ -10,3 +11,6 @@
   </mat-form-field>
   <button mat-button color="primary" type="submit" [disabled]="!registerform.valid" >Invia</button>
 </form>
+<p>oppure</p>
+<button mat-flat-button (click)="atLogin()">Accedi al tuo Account</button>
+</div>

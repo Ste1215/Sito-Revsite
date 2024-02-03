@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import {MatSidenavModule} from '@angular/material/sidenav'; 
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -10,7 +10,15 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { AuthService } from '../../auth/auth.service'; 
 import { CommonModule } from '@angular/common';
-import {MatMenuModule} from '@angular/material/menu';
+import {MatMenuModule, MatMenuTrigger} from '@angular/material/menu';
+import {
+  MatDialog,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogTitle,
+} from '@angular/material/dialog';
+import { SettingsUserComponents } from './settings-user.component';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -30,7 +38,12 @@ import {MatMenuModule} from '@angular/material/menu';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit {
-  constructor(public authService: AuthService, private router: Router){}
+  constructor(public dialog: MatDialog,public authService: AuthService, private router: Router){}
+  openDialog() {
+    this.dialog.open(SettingsUserComponents);
+  }
+  
+  
   isMenuVisible = false;
   ngOnInit(): void {
     if( this.authService.isAuthenticated() === true){

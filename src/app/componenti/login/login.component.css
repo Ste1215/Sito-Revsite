@@ -2,6 +2,31 @@ form{
     display: flex;
     align-items: center;
     flex-direction: column;
+    justify-content: center;
+}
+.login-form{
+  width: 50vh;
+  background: rgb(156, 156, 156);
+  color: white;
+   border: none;
+   border-radius: 5%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   min-height: 50vh;
+   margin: 0 auto;
+  /* display: flex;
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+  background-color: rgb(190, 190, 190);
+  border-radius: 5%;
+  width: 50vh;
+  padding: 40px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  flex-direction: column; */
 }
 h1{
     text-align: center;
@@ -14,7 +39,7 @@ a:hover{
     text-decoration: underline;
     cursor: pointer;
 }
-.example-container mat-form-field + mat-form-field {
+  .example-container mat-form-field + mat-form-field {
     margin-left: 8px;
   }
   
@@ -26,3 +51,8 @@ a:hover{
   input.example-right-align::-webkit-inner-spin-button {
     display: none;
   }
+  
+  input.example-right-align {
+    -moz-appearance: textfield;
+  }
+  

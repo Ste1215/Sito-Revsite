@@ -23,3 +23,12 @@
   p {
     color: #ffffff;
   }
+  .button-Sign{
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .button-Sign button{
+    margin: 5px;
+  }

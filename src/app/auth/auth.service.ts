@@ -39,6 +39,9 @@ export class AuthService {
   pathLogin(){
     this.router.navigate(['/login'])
   }
+  pathRegister(){
+    this.router.navigate(['/register'])
+  }
 
   
 }
