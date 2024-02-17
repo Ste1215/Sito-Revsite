@@ -7,6 +7,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { AuthService } from '../../auth/auth.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -25,7 +26,7 @@ export class RegisterComponent implements OnInit{
   
   constructor(private authService: AuthService, private router: Router){}
   ngOnInit(): void {
-   
+    
   }
   onSubmit(form: NgForm){
     const email =form.value.email;
@@ -38,5 +39,8 @@ export class RegisterComponent implements OnInit{
   }
   atLogin(){
     this.router.navigate(['/login'])
+  }
+  atHome(){
+    this.router.navigate(['/homepage'])
   }
 }

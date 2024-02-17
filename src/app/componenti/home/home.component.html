@@ -1,17 +1,31 @@
 <mat-toolbar>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
-    <span>HomePage</span>
+    <div class="logo"> <img src="/assets/img/RevSite-background.png" alt="Logo"><span>RevSite</span></div>
     <span class="example-spacer"></span>
     <div class="button-Sign">
           <button mat-stroked-button (click)="InLogin()">Login</button>
     <button mat-stroked-button (click)="inRegister()">Register</button>
   </div>
-
-    
   </mat-toolbar>
-  <div class="intro-section">
-    <h1>Benvenuti nel mio Progetto Revsite</h1>
-    <p>trova e scopri le migliori app/siti da utilizzare,votando e creando delle recensioni per ogni categoria</p>
-  </div>
+  <mat-drawer-container autosize>
+    <mat-drawer #drawer opened="false" mode="over" position="start">
+      <mat-nav-list>
+        <mat-list-item>
+          <button mat-stroked-button (click)="inRegister()">
+            <mat-icon>account_circle</mat-icon>
+            Crea il tuo Account!</button> 
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+      <div class="intro-section" style="text-align: center; min-height: 800px;">
+      <router-outlet></router-outlet>
+      <h1>Leggi recensioni.</h1>
+      <br>
+      <h1>Scrivi recensioni.</h1>
+      </div> 
+    </mat-drawer-content>
+  </mat-drawer-container>
+

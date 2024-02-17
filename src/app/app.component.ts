@@ -7,20 +7,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { AuthService } from './auth/auth.service';
 
-
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    MatSidenavModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    FormsModule,
-    ReactiveFormsModule,
-    CommonModule, 
-    RouterOutlet,],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+    selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css',
+    imports: [
+        MatSidenavModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        FormsModule,
+        ReactiveFormsModule,
+        CommonModule,
+        RouterOutlet,
+    ],
 })
 export class AppComponent  implements OnInit{
   title = 'REVSITE';
@@ -30,7 +30,7 @@ export class AppComponent  implements OnInit{
     if(localStorage.getItem('user')){
       const user = JSON.parse(localStorage.getItem('user'))
       console.log(user)
-      this.authService.createUser(user.email, user.id, user._token, user._expirationDate, 'assets/img/user.png');
+      this.authService.createUser(user.email, user.id, user._token, user._expirationDate, 'assets/img/user.png', user.profileImageUrl);
     console.log(this.authService.user)
     }
   }

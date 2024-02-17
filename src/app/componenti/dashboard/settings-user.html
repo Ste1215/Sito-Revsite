@@ -1,8 +1,15 @@
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>X</button>
+</mat-dialog-actions>
 <h2 mat-dialog-title>Modifica Profilo Utente</h2>
 <mat-dialog-content>
-
-      
+  <mat-list>
+    <mat-list-item><b>Email</b>: {{this.userEmail}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item><b>ID account</b>: {{this.userId}}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item><b>Modifica Immagine Profilo</b>:</mat-list-item> 
+    <input matInput type="file" (change)="onFileSelected($event)"/>
+  </mat-list>
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button mat-dialog-close>Chiudi</button>
-</mat-dialog-actions>
+

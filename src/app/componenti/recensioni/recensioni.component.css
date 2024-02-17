@@ -13,3 +13,10 @@ div button{
    align-items: center;
     padding: 22px;
 }
+.example-chip-list {
+    width: 100%;
+}
+.newRecensione-componente{
+    width: 100vh;
+    height: 50vh;
+}

@@ -38,12 +38,18 @@ import { SettingsUserComponents } from './settings-user.component';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit {
-  constructor(public dialog: MatDialog,public authService: AuthService, private router: Router){}
+
+term : any;
+  constructor(public dialog: MatDialog,public authService: AuthService, private router: Router){ }
+
+
+
   openDialog() {
     this.dialog.open(SettingsUserComponents);
   }
-  
-  
+  customImageSelected: boolean = false;
+
+   
   isMenuVisible = false;
   ngOnInit(): void {
     if( this.authService.isAuthenticated() === true){
@@ -52,6 +58,7 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(["/"]);  
 }
 }
+
 
 
 toggleMenu() {

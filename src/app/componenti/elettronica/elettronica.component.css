@@ -1,0 +1,17 @@
+.example-card {
+    max-width: 400px;
+  }
+.card-recensioni{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh; 
+}
+.card-recensioni > *{
+    margin: 5px;
+}
+div{
+  display: flex;
+align-items: center;
+}

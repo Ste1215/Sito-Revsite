@@ -1,0 +1,11 @@
+div{
+    font-weight: bolder;
+}
+mat-dialog-actions{
+    display: block;
+    right: 0;
+    position: absolute;
+}
+h2 mat-dialog-title{
+    text-align: center;
+}

@@ -18,8 +18,10 @@
   h1 {
     color: #eaeaea;
     font-size: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  
   p {
     color: #ffffff;
   }
@@ -31,4 +33,17 @@
   }
   .button-Sign button{
     margin: 5px;
+  }
+  .logo{
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    font-family: Limelight;
+  }
+  .logo span{
+    font-size: 1em;
+  }
+  .logo img{
+    width: 78px;
+    height: 72px;
   }

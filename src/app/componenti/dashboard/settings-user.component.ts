@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   MatDialog,
   MatDialogActions,
@@ -10,20 +10,18 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-export interface PeriodicElement {
-     position: number;
-     name: string;
-    email: string;
-    password: string;
-  }
-  const ELEMENT_DATA: PeriodicElement[] = [
-    {position: 1, name: 'stefano', email: 'stefanopoiatti@gmail.com', password: '12345678910'},
-  ];
+import {MatDividerModule} from '@angular/material/divider';
+import { AuthService } from '../../auth/auth.service';
+import {MatListModule} from '@angular/material/list'; 
+import { MatSidenavModule } from '@angular/material/sidenav';
 @Component({
     selector: 'settings-user',
     templateUrl: 'settings-user.html',
   standalone: true,
   imports: [
+    MatListModule,
+    MatSidenavModule,
+    MatDividerModule,
     MatTableModule,
     MatDialogTitle,
      MatDialogContent,
@@ -32,15 +30,54 @@ export interface PeriodicElement {
        MatButtonModule,
        MatFormFieldModule,
     ],
+    styleUrl: 'settings-user.css',
 
 })
 
-export class SettingsUserComponents {
-    displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-    dataSource = new MatTableDataSource(ELEMENT_DATA);
-  
-    applyFilter(event: Event) {
-      const filterValue = (event.target as HTMLInputElement).value;
-      this.dataSource.filter = filterValue.trim().toLowerCase();
+export class SettingsUserComponents implements OnInit {
+
+
+  userEmail: string = '';
+  userId: string = '';
+  customImageSelected: boolean = false;
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.userEmail = this.authService.user.email;
+    this.userId = this.authService.user.id;
+  }
+
+  onFileSelected(event: any): void {
+    const file: File = event.target.files[0];
+    if(file) {
+      this.uploadImage(file).then((imageUrl) => {
+        this.authService.updateProfileImage(imageUrl);
+        this.customImageSelected = true;
+      });
+    } else {
+      this.authService.useDefaultProfileImage();
+      this.customImageSelected = false;
     }
+  }
+  
+  uploadImage(file: File): Promise<string> {
+    return new Promise<string>((resolve) => {
+      setTimeout(() => {
+        const imageUrl = '';
+        resolve(imageUrl);
+      }, 2000);
+    });
+  }
+
+
+  
+  
+
+
+
+
+
+
+
+
 }

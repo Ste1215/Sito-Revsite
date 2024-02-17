@@ -16,17 +16,39 @@ form{
    flex-direction: column;
    min-height: 50vh;
    margin: 0 auto;
-  /* display: flex;
-  justify-content: center;
-  margin: auto;
+
+}
+@media (max-width: 768px){
+  .btn-google {
+    width: 100%;
+}
+}
+@media (max-width: 576px){
+  .btn-google {
+    width: 100%;
+}}
+
+div{
+  background-color: #fff;
+  border: 1px solid #fff;
+  display: flex;
   align-items: center;
-  background-color: rgb(190, 190, 190);
-  border-radius: 5%;
-  width: 50vh;
-  padding: 40px;
-  border: 1px solid #ccc;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  flex-direction: column; */
+  justify-content: center;
+  padding: 4px 4px;
+  border-radius: 15px !important;
+  margin-bottom: 0;
+}
+.btn-google:hover{
+  box-shadow: 0 8px 8px 8px rgba(0, 0, 0, 0);
+}
+.btn-google{
+  color: #555;
+  background-color: #fff;
+  padding: 4px 4px;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 h1{
     text-align: center;
@@ -42,7 +64,9 @@ a:hover{
   .example-container mat-form-field + mat-form-field {
     margin-left: 8px;
   }
-  
+  mat-form-field{
+    margin-top: 15px;
+  } 
   .example-right-align {
     text-align: right;
   }
@@ -51,7 +75,6 @@ a:hover{
   input.example-right-align::-webkit-inner-spin-button {
     display: none;
   }
-  
   input.example-right-align {
     -moz-appearance: textfield;
   }

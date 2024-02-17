@@ -1,18 +1,30 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import { Observable } from 'rxjs';
+import { CategorieInterface } from '../modelli/categorie.models';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
 
+
+
   constructor(private http: HttpClient,private authService: AuthService) {}
+  
+
+  // getCategorie(search: string): Observable<CategorieInterface[]>{
+  //   return this.http.get<CategorieInterface[]>(
+  //       `http://localhost:4200/categorie?title_like=${search}`
+  //   );
+  // }
 
   insertPersona(url: string,body: {} ){
     return this.http.post(url, body)
   }
-
   getPersone(url: string){
     return this.http.get(`${url}?auth=${this.authService.user.token}`)   
   }

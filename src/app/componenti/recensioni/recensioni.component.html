@@ -1,8 +1,39 @@
 
 <h1>Crea la tua Prima recensione!</h1>
 <div>
-
-<button mat-stroked-button >inizia ora</button>
-
+<button mat-raised-button *ngIf="!mostraRecensione"  (click)=" mostraRecensione= true;mostraBottone = false">inizia ora</button>
+<div class="newRecensione-componente" *ngIf="mostraRecensione">
+    <h2 mat-dialog-title>Recensioni su </h2>
+  <form>
+    <mat-form-field class="example-chip-list">
+      <mat-label>Azienda Elettronica</mat-label>
+      <mat-chip-grid #chipGrid aria-label="selezione azienda elettronica">
+        @for (fruit of EletronicsShop; track fruit) {
+          <mat-chip-row (removed)="remove(fruit)">
+            {{fruit}}
+            <button matChipRemove [attr.aria-label]="'remove ' + fruit">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip-row>
+        }
+      </mat-chip-grid>
+      <input placeholder="Nuovo Azienda Elettronica.." #fruitInput [formControl]="fruitCtrl"
+        [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)"/>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+        @for (fruit of filteredShop | async; track fruit) {
+          <mat-option [value]="fruit">{{fruit}}</mat-option>
+        }
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+  <mat-dialog-content>
+      <textarea [(ngModel)]="nuovaRecensione" placeholder="Inserisci la tua recensione" style="resize: none; width: 100vh; height: 50px;"></textarea> 
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close (click)="inviaRecensione()">invia recensione</button>
+  </mat-dialog-actions>
+  </div>
 </div>
 

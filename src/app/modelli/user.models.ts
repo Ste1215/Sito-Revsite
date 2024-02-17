@@ -1,10 +1,14 @@
 export class User{
+    getId() {
+        throw new Error('Method not implemented.')
+    }
     constructor(
         public  email: string,
         public  id: string,
         private _token: string,
         private _expirationDate: Date,
-        public profileImage: string
+        public profileImage: string,
+        public profileImageUrl: string,
     ){}
 
 get token(){
