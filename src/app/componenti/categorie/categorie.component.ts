@@ -42,7 +42,7 @@ export class CategorieComponent implements OnInit  {
 // searchForm= this.fb.nonNullable.group({
 //   search: ''
 // });
-  constructor(private firebase: FirebaseService,private fb: FormBuilder) {}
+  constructor() {}
   ngOnInit():void {
     // this.fetchData();
   }

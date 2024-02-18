@@ -1,6 +1,10 @@
 <div class="login-form">
 <h1>Registrazione Utente</h1>
 <form #registerform="ngForm" (ngSubmit)="onSubmit(registerform)">
+  <mat-form-field>
+    <mat-label>Nome</mat-label>
+    <input matInput type="nome" name="nome" ngModel required>
+</mat-form-field>
 <mat-form-field>
     <mat-label>Email</mat-label>
     <input matInput type="email" name="email" ngModel required>

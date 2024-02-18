@@ -27,8 +27,7 @@ export class LoginComponent implements OnInit {
   hide = true;
   loading = false;
   constructor(private authService: AuthService,private router: Router){}
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   onSubmit(form: NgForm){
     this.loading=true;
     const email =form.value.email
@@ -36,7 +35,7 @@ export class LoginComponent implements OnInit {
     this.authService.signIn(email,password)
     .subscribe((data: any) => {
      const expirationDate = new Date(new Date().getTime() + data.expiresIn * 1000)
-      this.authService.createUser(data.email, data.localId, data.idToken,data.expiresIn, 'assets/img/user.png',data.profileImageUrl)
+      this.authService.createUser(data.nome, data.email, data.localId, data.idToken,data.expiresIn, 'assets/img/user.png',data.profileImageUrl)
      localStorage.setItem('user',JSON.stringify(this.authService.user))
      this.router.navigate(['/categorie']);
     })

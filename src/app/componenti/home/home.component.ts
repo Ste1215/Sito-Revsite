@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatGridListModule} from '@angular/material/grid-list';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -17,15 +18,14 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
+    MatGridListModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
- 
-      constructor(private authService: AuthService, private router: Router) {}
-
-
+  constructor(private authService: AuthService, private router: Router) {}
+  
   InLogin(){
     this.authService.pathLogin();
   }

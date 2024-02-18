@@ -25,13 +25,12 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit{
   
   constructor(private authService: AuthService, private router: Router){}
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
   onSubmit(form: NgForm){
+    const nome= form.value.nome;
     const email =form.value.email;
     const password =form.value.password;
-    this.authService.signUp(email,password)
+    this.authService.signUp(nome,email,password)
     .subscribe((data: any) => {
       console.log(data)
     })

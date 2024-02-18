@@ -30,6 +30,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 0.7em !important;
+    cursor: pointer;
+  }
+  .signInButton{
+    border: 0;
+    background: transparent;
+    margin: 5px;
+    color: black;
   }
   .button-Sign button{
     margin: 5px;
@@ -42,6 +50,15 @@
   }
   .logo span{
     font-size: 1em;
+  }
+  mat-grid-list {
+    background: rgb(0, 0, 0);
+    color: white;
+  }
+  mat-grid-list span{
+    font-weight: bolder;
+    font-size: 2rem;
+    color: white;
   }
   .logo img{
     width: 78px;

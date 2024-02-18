@@ -1,12 +1,19 @@
-
 <mat-tab-group>
-    <mat-tab label="Mediaworld"> 
-            
-    </mat-tab>
-    <mat-tab label="Euronics"> 
-
-    </mat-tab>
-    <mat-tab label="Unieuro"> 
-        
-    </mat-tab>
-  </mat-tab-group>
+  <mat-tab *ngFor="let negozio of negozi" [label]="negozio">
+    <div *ngFor="let recensione of recensioniPerNegozi[negozio]">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Recensione by</mat-card-title>
+          <mat-card-subtitle>{{this.userNome}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            {{ recensione.testo }}
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>boh</button>
+          <button mat-button>boh</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </mat-tab>
+</mat-tab-group>

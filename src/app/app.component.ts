@@ -29,8 +29,8 @@ export class AppComponent  implements OnInit{
   ngOnInit(): void {
     if(localStorage.getItem('user')){
       const user = JSON.parse(localStorage.getItem('user'))
-      console.log(user)
-      this.authService.createUser(user.email, user.id, user._token, user._expirationDate, 'assets/img/user.png', user.profileImageUrl);
+      const nome = user.nome || 'default';
+      this.authService.createUser(user.email,nome, user.id, user._token, user._expirationDate, 'assets/img/user.png', user.profileImageUrl);
     console.log(this.authService.user)
     }
   }

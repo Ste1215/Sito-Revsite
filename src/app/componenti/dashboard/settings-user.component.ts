@@ -39,12 +39,15 @@ export class SettingsUserComponents implements OnInit {
 
   userEmail: string = '';
   userId: string = '';
+  userNome: string = '';
   customImageSelected: boolean = false;
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
+    this.userNome= this.authService.user.nome;
     this.userEmail = this.authService.user.email;
     this.userId = this.authService.user.id;
+    
   }
 
   onFileSelected(event: any): void {

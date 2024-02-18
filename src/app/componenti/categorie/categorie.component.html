@@ -1,52 +1,21 @@
-
-<div>
-    <h1 style="display: block; padding: 5em; ">Trova aziende affidabili.Scrivi Recensioni.</h1>
+<div class="container-img" [@fadeIn]>
+    <h1 >Trova aziende affidabili.Scrivi Recensioni.</h1>
 </div>
-<h1>Scopri le categorie</h1>
- <div class="categorie">
-        <a class="btn-categorie" routerLink="/elettronica" mat-raised-button [@fadeIn]>
+<h1 [@fadeIn]>Scopri le categorie</h1>
+ <div class="categorie" [@fadeIn]>
+        <a class="btn-categorie" routerLink="/elettronica" mat-raised-button >
         <mat-icon>computer</mat-icon>
        <span>Elettronica</span> 
     </a>
-    <a class="btn-categorie" routerLink="/streaming" mat-raised-button [@fadeIn]>
+    <a class="btn-categorie" routerLink="/streaming" mat-raised-button >
         <mat-icon>cast_connected</mat-icon>
        <span>Streaming</span>
     </a>
-    <a class="btn-categorie" routerLink="/shopOnline" mat-raised-button [@fadeIn]>
+    <a class="btn-categorie" routerLink="/shopOnline" mat-raised-button >
         <mat-icon>business_center</mat-icon>
         <span>E-commerce</span>
     </a>
 </div> 
-
-
-<!-- <div class="container">
-    <form 
-    [formGroup]="searchForm"
-     class="searchBar" 
-     (ngSubmit)="onSearchSubmit()" >
-     <input type="text" 
-     placeholder="cerca..." 
-     formControlName="search"
-      class="SearchBarInput"/>
-    </form>
-    <div class="categorieTabella">
-        <div class="categorie" *ngFor="let categoria of categorie">
-            {{categoria.nome}}
-        </div>
-        <a routerLink="/elettronica" mat-raised-button [@fadeIn]>
-        <mat-icon>computer</mat-icon>
-       <span></span> 
-    </a>
-    <a routerLink="/streaming" mat-raised-button [@fadeIn]>
-        <mat-icon>cast_connected</mat-icon>
-       <span>{{categoria.nome}}</span>
-    </a>
-    <a routerLink="/shopOnline" mat-raised-button [@fadeIn]>
-        <mat-icon>business_center</mat-icon>
-        <span>{{categoria.nome}}</span>
-    </a>
-    </div>
-</div> -->
 
 
 

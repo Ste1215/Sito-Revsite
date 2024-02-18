@@ -5,8 +5,8 @@
     <div class="logo"> <img src="/assets/img/RevSite-background.png" alt="Logo"><span>RevSite</span></div>
     <span class="example-spacer"></span>
     <div class="button-Sign">
-          <button mat-stroked-button (click)="InLogin()">Login</button>
-    <button mat-stroked-button (click)="inRegister()">Register</button>
+          <button class="signInButton" (click)="InLogin()">Sign in</button>
+    <button mat-stroked-button (click)="inRegister()">Sign Up</button>
   </div>
   </mat-toolbar>
   <mat-drawer-container autosize>
@@ -25,7 +25,18 @@
       <h1>Leggi recensioni.</h1>
       <br>
       <h1>Scrivi recensioni.</h1>
-      </div> 
+      </div>
+      <footer>
+        <mat-grid-list cols="2" rowHeight="2:1">
+          <mat-grid-tile>
+            <span>RevSite</span>
+          </mat-grid-tile>
+        </mat-grid-list>
+
+        <div class="social">
+          
+        </div>
+      </footer> 
     </mat-drawer-content>
   </mat-drawer-container>
 
