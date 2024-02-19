@@ -11,6 +11,9 @@ import { HomeComponent } from './componenti/home/home.component';
 import { ElettronicaComponent } from './componenti/elettronica/elettronica.component';
 import { StreamingComponent } from './componenti/streaming/streaming.component';
 import { ValutazioniComponent } from './componenti/valutazioni/valutazioni.component';
+import { ECommerceComponent } from './componenti/e-commerce/e-commerce.component';
+import { RecensioniStreamingComponent } from './componenti/recensioni-streaming/recensioni-streaming.component';
+import { ValutazioniStreamingComponent } from './componenti/valutazioni-streaming/valutazioni-streaming.component';
 
 export const routes: Routes = [
     { path: 'homepage', component: HomeComponent },
@@ -23,12 +26,13 @@ export const routes: Routes = [
         {path:'pagina3',component:Pagina3Component},
         {path: 'elettronica',component: ElettronicaComponent},
         {path: 'streaming',component: StreamingComponent},
-        {path: 'shopOnline',component: StreamingComponent},
+        {path: 'E-commerce',component: ECommerceComponent},
         {path: 'valutazioni',component: ValutazioniComponent},
+        {path: 'recensioni/recensioneStreaming',component: RecensioniStreamingComponent},
+        {path: 'streaming/ValutazioniStreaming',component: ValutazioniStreamingComponent},
     ]},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
     {path: '404', component: NotfoundComponent},
-
     {path: '**', redirectTo:'/404'},
 ];

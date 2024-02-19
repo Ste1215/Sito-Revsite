@@ -9,12 +9,10 @@ import {
   MatDialogTitle,
 } from '@angular/material/dialog';
 import { AuthService } from '../../auth/auth.service'
-import {ElementRef, ViewChild, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {MatAutocompleteSelectedEvent, MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
+import{ ReactiveFormsModule} from '@angular/forms';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatChipsModule} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {MatIconModule} from '@angular/material/icon';
@@ -55,6 +53,11 @@ export class RecensioniComponent implements OnInit{
   mostraBottone: boolean = true;
   nuovaRecensione: string = '';
   negozioCorrente: string = 'Mediaworld';
+  mostraMessaggio:boolean=false;
+
+
+
+
   selezionaNegozio(negozio: string){
     this.negozioCorrente = negozio;
   }
@@ -66,7 +69,12 @@ export class RecensioniComponent implements OnInit{
       this.authService.aggiungiRecensione({ testo: this.nuovaRecensione, negozio: this.negozioCorrente  });
       this.nuovaRecensione = '';
     }
+    this.mostraMessaggio=true;
+    setTimeout(() => {
+      this.mostraMessaggio = false;
+    }, 5000);
   }
+
 
   //versione vecchia funzionante ma dove il conteggio aumentava anche dove non ho messo una recensione
     // inviaRecensione() {

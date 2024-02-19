@@ -12,8 +12,11 @@
       <textarea [(ngModel)]="nuovaRecensione" placeholder="Inserisci la tua recensione"></textarea> 
   </mat-dialog-content>
   <mat-dialog-actions>
-    <button mat-button mat-dialog-close [disabled]="!nuovaRecensione" (click)="inviaRecensione()" >invia recensione</button>
+    <button mat-button mat-dialog-close  [disabled]="!nuovaRecensione" (click)="inviaRecensione()">invia recensione</button>
   </mat-dialog-actions>
+  </div>
+  <div *ngIf="mostraMessaggio">
+    <p>Grazie!, hai recensito correttamente {{negozioCorrente}}</p>
   </div>
 </div>
 

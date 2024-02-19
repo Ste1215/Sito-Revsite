@@ -15,3 +15,13 @@ div{
   display: flex;
 align-items: center;
 }
+.StreamingContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh; 
+}
+.StreamingContainer > *{
+  margin: 5px;
+}

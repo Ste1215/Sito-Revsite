@@ -19,7 +19,16 @@ export class AuthService {
   isLoggedIn: boolean;
   user : User
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {
+//caricare le recensioni salvate  nel localStorage quando c'è l'inizializzazione
+    // const recensioniLocalStorage = localStorage.getItem('recensioni');
+    // if (recensioniLocalStorage) {
+    //   const recensioni = JSON.parse(recensioniLocalStorage);
+    //   this.recensioniSubject.next(recensioni);
+    // }
+
+
+   }
   // private apiUrl = 'https://revsite-7732b-default-rtdb.europe-west1.firebasedatabase.app/'; 
 
 
@@ -104,10 +113,18 @@ updateProfileImage(imageUrl: string): void {
     const recensioniAttuali = this.recensioniSubjects[negozio].value;
     const nuoveRecensioni = [...recensioniAttuali, recensione];
     this.recensioniSubjects[negozio].next(nuoveRecensioni);
+    // salvarle in localStorage
+    // localStorage.setItem('recensioni', JSON.stringify(nuoveRecensioni));
   }
 
   inviaRecensione(recensione: Recensione) {
     this.recensioneSubject.next(recensione);
+  }
+  getRecensioniByCategoria(categoria: string): Observable<Recensione[]> {
+    if (!this.recensioniSubjects[categoria]) {
+      this.recensioniSubjects[categoria] = new BehaviorSubject<Recensione[]>([]);
+    }
+    return this.recensioniSubjects[categoria].asObservable();
   }
   
 }
