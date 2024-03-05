@@ -6,7 +6,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService, Recensione } from '../../auth/auth.service';
 import { RecensioniComponent } from "../recensioni/recensioni.component";
-
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @Component({
     selector: 'app-elettronica',
@@ -14,6 +16,9 @@ import { RecensioniComponent } from "../recensioni/recensioni.component";
     templateUrl: './elettronica.component.html',
     styleUrl: './elettronica.component.css',
     imports: [
+      MatFormFieldModule,
+      MatInputModule,
+      MatTableModule,
         CommonModule,
         MatIconModule,
         MatButtonModule,
@@ -21,16 +26,8 @@ import { RecensioniComponent } from "../recensioni/recensioni.component";
         RecensioniComponent,
     ]
 })
-export class ElettronicaComponent implements OnInit{
-onValutazioniStreaming() {
- this.router.navigate(['/streaming/ValutazioniStreaming']); 
-}
-  numeroRecensioni: number = 0;
-  recensioneInseritaDallUtente: string;
-  isElettronicaPage: boolean;
-@Input() categoria: string;
-@Input() identificatore: string;
-    negozi =[
+export class ElettronicaComponent implements OnInit{ 
+  negozi =[
     {nome: "Mediaworld", numeroRecensioni: 0},
     {nome: "Euronics", numeroRecensioni: 0},
     {nome: "Unieuro", numeroRecensioni: 0},
@@ -39,9 +36,16 @@ onValutazioniStreaming() {
     {nome: "Youtube", numeroRecensioni: 0},
     {nome: "Twitch", numeroRecensioni: 0},
     {nome: "Altadefinizione", numeroRecensioni: 0},
-  ]
-
-
+  ]  
+  numeroRecensioni: number = 0;
+  recensioneInseritaDallUtente: string;
+  isElettronicaPage: boolean;
+@Input() categoria: string;
+@Input() identificatore: string;
+onValutazioniStreaming() {
+ this.router.navigate(['/streaming/ValutazioniStreaming']); 
+}
+  
   constructor(private route: ActivatedRoute,private router: Router,public authService: AuthService){}
   ngOnInit(): void {
     this.isElettronicaPage = this.router.url.includes('/elettronica');

@@ -2,6 +2,8 @@
 <h1>Crea la tua Prima recensione!</h1>
 <button mat-raised-button *ngIf="!mostraRecensione"  (click)=" mostraRecensione= true; mostraBottone = false">inizia ora</button>
 <div class="newRecensione-componente" *ngIf="mostraRecensione">
+    <!-- <a (click)="pathCategorie()" >Torna alle categorie</a> -->
+    <a style="color: gray; text-decoration: underline; display: block; text-align: end;" (click)="pathSteamingCategoria()">Vuoi recensire La categoria Streaming?</a>
     <h2 mat-dialog-title>Recensione su </h2>
 <mat-chip-listbox aria-label="Fish selection">
       <mat-chip-option  (click)="selezionaNegozio('Mediaworld')">Mediaworld</mat-chip-option>
@@ -18,5 +20,9 @@
   <div *ngIf="mostraMessaggio">
     <p>Grazie!, hai recensito correttamente {{negozioCorrente}}</p>
   </div>
+  <div *ngIf="mostraMessaggioValutazioni">
+    <p (click)="onValutazioni()" style="text-decoration: underline; color: gray;">Vai alle Valutazioni della categoria Elettronica</p>
+  </div>
+
 </div>
 

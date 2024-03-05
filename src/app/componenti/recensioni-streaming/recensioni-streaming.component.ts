@@ -12,6 +12,7 @@ import {
   MatDialogContent,
   MatDialogTitle,
 } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-recensioni-streaming',
   standalone: true,
@@ -26,9 +27,12 @@ import {
   styleUrl: './recensioni-streaming.component.css'
 })
 export class RecensioniStreamingComponent implements OnInit {
-  constructor(private authService: AuthService) { }
+
+  constructor(private authService: AuthService,private router: Router) { }
   categoria: 'streaming';
   recensioni: Recensione[] = [];
+  mostraMessaggio: boolean= false;
+  mostraMessaggioValutazioni:boolean= false;
   ngOnInit(): void {
     this.authService.getRecensioniByNegozio('Youtube').subscribe(recensioni => {
       this.recensioni = recensioni;
@@ -48,12 +52,24 @@ export class RecensioniStreamingComponent implements OnInit {
   selezionaNegozio(negozio: string){
     this.negozioCorrente = negozio;
   }
+  OnValutazioniStreaming(){
+    this.router.navigate(['/streaming/ValutazioniStreaming']);
+  }
+  OnRecensioniElettronica(){
+    this.router.navigate(['/recensioni']);
+  }
   inviaRecensione() {
     this.recensioneInviata.emit(this.nuovaRecensione);
     if (this.nuovaRecensione.trim() !== '') {
       this.authService.aggiungiRecensione({ testo: this.nuovaRecensione, negozio: this.negozioCorrente  });
       this.nuovaRecensione = '';
     }
+    this.mostraMessaggio=true;
+    this.mostraMessaggioValutazioni=true;
+    setTimeout(() => {
+      this.mostraMessaggio = false;
+      this.mostraMessaggioValutazioni=false;
+    }, 4000);
   }
 
 }

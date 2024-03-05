@@ -8,20 +8,22 @@ import { RouterModule } from '@angular/router';
 import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { FooterComponent } from "../footer/footer.component";
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [
-    RouterModule,
-    MatListModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatGridListModule,
-  ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+    selector: 'app-home',
+    standalone: true,
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.css',
+    imports: [
+        RouterModule,
+        MatListModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatButtonModule,
+        MatToolbarModule,
+        MatGridListModule,
+        FooterComponent
+    ]
 })
 export class HomeComponent {
   constructor(private authService: AuthService, private router: Router) {}
@@ -34,5 +36,8 @@ export class HomeComponent {
   }
   inRegister(){
     this.authService.pathRegister();
+  }
+  onHome(){
+    this.router.navigate(['/homapage']);
   }
 }

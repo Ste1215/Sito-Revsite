@@ -1,0 +1,169 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
+footer {
+    background-color: #000000;
+    color: #fff;
+    padding: 80px;
+    text-align: center;
+    animation: fadeInUp 4s ease-out;
+    margin: 0;
+    font-size: 1.2em;
+   transition: all 0.5s ease;
+}
+  
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.footer-content p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #wrapper{
+
+    margin: 0;
+    padding: 0;
+    display: flex;
+    margin-left: 0;
+    left: 0;
+    transition: all 0.5s ease;
+  }
+  
+  .contact-section {
+    color: white;
+    cursor: pointer;
+    transition: all 0.5s ease;
+  }
+  
+  .contact-section span {
+
+    transition: all 0.5s ease;
+    cursor: pointer;
+
+  }
+  
+  .contact-section span:hover {
+    padding-left: 8px;
+  }
+  
+  .contact-section p:hover {
+    color: rgb(125, 125, 125) !important;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .img-fluidapp-img {
+    background-color: #fff;
+  }
+  
+  .download-buttons {
+    cursor: pointer;
+    transition: all 0.5s ease;
+  }
+  
+  .download-buttons p:hover {
+    padding-left: 5px;
+    transition: all 0.5s ease;
+  }
+  
+  .download-buttons li {
+    list-style: none;
+  }
+  
+  .social-icons{
+    padding: 0;
+    list-style: none;
+    margin: 1em;
+  }
+  #wrapper span{
+    cursor: pointer;
+  }
+  .social-icons li{
+    display: inline-block;
+    margin: 0.10em;
+    position: relative;
+    font-size: 1.2em;
+  }
+  
+.icon{
+    display: inline-block;
+}
+
+.Inc{
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgb(125, 125, 125) ;
+}
+  .icon:before{
+    content: "";
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    display: block;
+    background: linear-gradient(45deg, #0073ff, #0a3aaa);
+  }
+  
+  .icon:hover:before{
+    transform: scale(0);
+    transition: all 265ms ease-in;
+  }
+  
+  i{
+    color: #fff;
+    position: absolute;
+    top: 14px;
+    left: 14px;
+  }
+  
+@media screen and (max-width: 640px) {
+  .Inc {
+    position: static; 
+    text-align: center;
+  }
+  .footer-content {
+      padding: 20px;
+  }
+  
+   .download-buttons {
+      flex-direction: column;
+      align-items: center;
+  }
+  
+  .footer-content p {
+      flex-direction: column;
+      text-align: center;
+  }
+  
+  .icon i:before {
+      width: 30px;
+      height: 30px;
+  }
+  }
+@media screen and (min-width: 1024px) {
+  footer {
+      padding: 80px;
+  }
+  
+  .footer-content {
+      padding: 0 80px;
+  }
+}
+@media screen and (max-width: 480px) {
+  footer {
+      padding: 40px;
+  }
+  
+  .footer-content {
+      flex-direction: column;
+      text-align: center;
+   }
+  
+  .download-buttons {
+     margin-top: 20px;
+  }
+  }

@@ -2,6 +2,20 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji""Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji" !important;
+}
+.mat-toolbar{
+  background-color: black;
+  color: #ffffff;
+}
+
+mat-drawer-container,mat-drawer,mat-nav-list,mat-list-item {
+  background-color: black;
+  color: #ffffff;
+}
+mat-list-item button{
+  background-color: #ffffff;
+  color: #000000;
 }
 .example-spacer {
     flex: 1 1 auto;
@@ -30,14 +44,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.7em !important;
     cursor: pointer;
+    font-size: 1em;
+  }
+  .button-Sign button{
+    border: 1px solid white;
   }
   .signInButton{
     border: 0;
     background: transparent;
-    margin: 5px;
-    color: black;
+    cursor: pointer;
+    margin: 10px !important;
+    color: #ffffff;
   }
   .button-Sign button{
     margin: 5px;
@@ -49,7 +67,8 @@
     font-family: Limelight;
   }
   .logo span{
-    font-size: 1em;
+    font-size: 1.1em;
+    font-family: 'Lato', sans-serif;
   }
   mat-grid-list {
     background: rgb(0, 0, 0);

@@ -1,16 +1,20 @@
+
+
 <mat-toolbar>
     <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
-    <div class="logo"> <img src="/assets/img/RevSite-background.png" alt="Logo"><span>RevSite</span></div>
+    <div class="logo"> 
+      <img src="/assets/img/RevSite-background.png" alt="Logo"><span style="cursor: pointer;" (click)="onHome()">RevSite</span>
+    </div>
     <span class="example-spacer"></span>
     <div class="button-Sign">
-          <button class="signInButton" (click)="InLogin()">Sign in</button>
+          <button mat-stroked-button class="signInButton" (click)="InLogin()">Sign in</button>
     <button mat-stroked-button (click)="inRegister()">Sign Up</button>
   </div>
   </mat-toolbar>
-  <mat-drawer-container autosize>
-    <mat-drawer #drawer opened="false" mode="over" position="start">
+  <mat-drawer-container autosize >
+    <mat-drawer #drawer opened="false" mode="over" position="start" >
       <mat-nav-list>
         <mat-list-item>
           <button mat-stroked-button (click)="inRegister()">
@@ -27,15 +31,7 @@
       <h1>Scrivi recensioni.</h1>
       </div>
       <footer>
-        <mat-grid-list cols="2" rowHeight="2:1">
-          <mat-grid-tile>
-            <span>RevSite</span>
-          </mat-grid-tile>
-        </mat-grid-list>
-
-        <div class="social">
-          
-        </div>
+          <app-footer></app-footer>
       </footer> 
     </mat-drawer-content>
   </mat-drawer-container>

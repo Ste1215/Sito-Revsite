@@ -20,6 +20,7 @@ import {AsyncPipe} from '@angular/common';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import { CommonModule } from '@angular/common'; 
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-recensioni',
   standalone: true,
@@ -48,15 +49,20 @@ export class RecensioniComponent implements OnInit{
   @Output() recensioneInviata = new EventEmitter<string>();
   recensioni: string[] = [];
   ngOnInit(): void {}
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,private router: Router) {}
   mostraRecensione: boolean = false;
   mostraBottone: boolean = true;
   nuovaRecensione: string = '';
   negozioCorrente: string = 'Mediaworld';
   mostraMessaggio:boolean=false;
+  mostraMessaggioValutazioni:boolean=false;
 
-
-
+  pathSteamingCategoria(){
+    this.router.navigate(['/recensioni/recensioneStreaming']);
+  }
+  onValutazioni(){
+this.router.navigate(['/valutazioni']);
+  }
 
   selezionaNegozio(negozio: string){
     this.negozioCorrente = negozio;
@@ -70,9 +76,11 @@ export class RecensioniComponent implements OnInit{
       this.nuovaRecensione = '';
     }
     this.mostraMessaggio=true;
+    this.mostraMessaggioValutazioni=true;
     setTimeout(() => {
       this.mostraMessaggio = false;
-    }, 5000);
+      this.mostraMessaggioValutazioni= false;
+    }, 4000);
   }
 
 
@@ -88,6 +96,8 @@ export class RecensioniComponent implements OnInit{
   //   }
   // }
 
-
+  // pathCategorie(){
+  //   this.authService.pathCategorie()
+  // }
 
 }

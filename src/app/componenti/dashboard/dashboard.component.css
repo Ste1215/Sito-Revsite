@@ -1,3 +1,9 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji""Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji" !important;
+}
 .example-container {
     position: absolute;
     top: 0;
@@ -18,12 +24,18 @@
   margin-right: 8px;
   position: absolute;
 }
-
-
 .profile-container {
   border-radius: 50%;
 }
 .profile-container img{
   width: 42px;
   height: 42px;
+} 
+ .profile-container img:hover {
+  transform: scale(1.05);
+}  
+.mat-sidenav {
+  width: 100%;
+  max-width: 250px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }

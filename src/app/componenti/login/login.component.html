@@ -1,14 +1,9 @@
-<div class="login-form">
-<form #loginform="ngForm" (ngSubmit)="onSubmit(loginform)">
+<body>
+  <form #loginform="ngForm" (ngSubmit)="onSubmit(loginform)">
+    <div class="logoImg" style=" text-align: center;">
+      <img class="ImgLogo" src="../../../assets/img/RevSite-background.png" alt="" height="52px" />
+    </div>
    <h1>Login</h1>
-   <span>con</span>
-   <div>
-    <a class="btn-google"  style="text-decoration: none; cursor: pointer;">
-      <div class="button">
-        <img src="../../../assets/img/icons-google.png" alt="" height="24px" width="24px"><span>Google</span>
-      </div>
-    </a>
-   </div>
 <mat-form-field>
     <mat-label>Email</mat-label>
     <input matInput type="email" name="email" ngModel required>
@@ -17,8 +12,14 @@
     <mat-label>Password</mat-label>
     <input matInput type="password" name="password" ngModel required>
   </mat-form-field>
-  <button mat-button color="primary" type="submit" [disabled]="!loginform.valid">invia</button>
-</form>
-<p>oppure</p>
+  <button mat-button color="primary" type="submit" [disabled]="!loginform.valid">Accedi</button>
+ <div class="social">
+    <div class="go">
+    <button style="display: none;" disabled="true"></button><img src="../../../assets/img/icons-google.png" alt="google img" height="24px">  Google</div>
+   </div>
+   <p style="text-align: center;">oppure</p>
 <button mat-flat-button (click)="atLogin()">Registrati</button>
-</div>
+</form> 
+</body>
+
+

@@ -5,20 +5,16 @@
 <mat-sidenav-container class="example-container">
     <mat-sidenav mode="side" opened> 
         <mat-list role="list">
-            <mat-list-item role="listitem" routerLink="categorie"  [routerLinkActive]="'categorie'">Categorie</mat-list-item>
-            <mat-list-item role="listitem" routerLink="recensioni" [routerLinkActive]="'categorie'">Recensioni</mat-list-item>
+         <mat-list-item role="listitem" routerLink="categorie"  [routerLinkActive]="'categorie'"><mat-icon >category</mat-icon>Categorie</mat-list-item>
+            <mat-list-item role="listitem" routerLink="recensioni" [routerLinkActive]="'categorie'"><mat-icon >reviews</mat-icon>Recensioni</mat-list-item>
             <mat-list-item role="listitem" routerLink="pagina3"    [routerLinkActive]="'categorie'">Pagina 3</mat-list-item>
           </mat-list>
     </mat-sidenav>
     <mat-sidenav-content> 
       <mat-toolbar color="primary">
             <span class="example-spacer"></span>
-              
         <div class="profile-container" (click)="toggleMenu()">
               <button mat-button [matMenuTriggerFor]="menu" style="clip-path: circle(50%);" >
-                <div class="search">
-                      
-                </div>
                 <img [src]="authService.user.profileImage" alt="Default"/>
               </button>
               <mat-menu #menu="matMenu" >

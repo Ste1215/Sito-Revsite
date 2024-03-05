@@ -1,4 +1,8 @@
-<div class="login-form">
+<body>
+  <div class="register-form">
+    <div class="logoImg" style=" text-align: center;">
+      <img class="ImgLogo" src="../../../assets/img/RevSite-background.png" alt="" height="52px" />
+    </div>
 <h1>Registrazione Utente</h1>
 <form #registerform="ngForm" (ngSubmit)="onSubmit(registerform)">
   <mat-form-field>
@@ -19,3 +23,4 @@
 <button mat-flat-button (click)="atLogin()">Accedi al tuo Account</button><br>
 <a style="cursor: pointer;  color: black; text-decoration: underline;"  (click)="atHome()">Torna alla home</a>
 </div>
+</body>
