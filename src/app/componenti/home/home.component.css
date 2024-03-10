@@ -16,6 +16,9 @@ mat-drawer-container,mat-drawer,mat-nav-list,mat-list-item {
 mat-list-item button{
   background-color: #ffffff;
   color: #000000;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 .example-spacer {
     flex: 1 1 auto;
@@ -65,15 +68,25 @@ mat-list-item button{
     align-items: center;
     border-radius: 50%;
     font-family: Limelight;
+    margin: 0;
+    padding: 0;
   }
   .logo span{
     font-size: 1.1em;
+    margin: 0;
+    padding: 0;
     font-family: 'Lato', sans-serif;
   }
   mat-grid-list {
     background: rgb(0, 0, 0);
     color: white;
   }
+  .w-4 {
+    width: 1em;
+}
+.h-4 {
+  height: 1em;
+}
   mat-grid-list span{
     font-weight: bolder;
     font-size: 2rem;

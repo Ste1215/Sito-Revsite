@@ -20,6 +20,7 @@ import { AuthService } from './auth/auth.service';
         ReactiveFormsModule,
         CommonModule,
         RouterOutlet,
+        
     ],
 })
 export class AppComponent  implements OnInit{
