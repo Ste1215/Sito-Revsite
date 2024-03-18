@@ -14,13 +14,14 @@ import {MatDividerModule} from '@angular/material/divider';
 import { AuthService } from '../../auth/auth.service';
 import {MatListModule} from '@angular/material/list'; 
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
 @Component({
     selector: 'settings-user',
     templateUrl: 'settings-user.html',
   standalone: true,
   imports: [
     MatListModule,
-    MatSidenavModule,
+    MatSidenavModule,MatIconModule,
     MatDividerModule,
     MatTableModule,
     MatDialogTitle,
@@ -43,11 +44,16 @@ export class SettingsUserComponents implements OnInit {
   customImageSelected: boolean = false;
   constructor(private authService: AuthService) {}
 
+  GetNome(){
+   return this.userNome= this.authService.user.nome;
+  }
+  onLogOut(){
+    this.authService.logout();
+  }
   ngOnInit(): void {
     this.userNome= this.authService.user.nome;
     this.userEmail = this.authService.user.email;
-    this.userId = this.authService.user.id;
-    
+    this.userId = this.authService.user.id; 
   }
 
   onFileSelected(event: any): void {

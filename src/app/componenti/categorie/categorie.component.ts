@@ -4,13 +4,14 @@ import {MatIconModule} from '@angular/material/icon';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { FormBuilder, FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule } from '@angular/forms';
 import { AuthService } from '../../auth/auth.service';
 import { FirebaseService } from '../../servizi/firebase.service';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {MatTabsModule} from '@angular/material/tabs';
 import { CategorieInterface } from '../../modelli/categorie.models';
 import {  ReactiveFormsModule } from '@angular/forms';
+import { ArticleInterface } from '../../modelli/cercaArticoli.models';
 @Component({
   selector: 'app-categorie',
   standalone: true,
@@ -35,26 +36,47 @@ import {  ReactiveFormsModule } from '@angular/forms';
   ],
 })
 export class CategorieComponent implements OnInit  {
-// term: any;
-// categorie: CategorieInterface[]= [];
-// categoria: any;
-// search='';
-// searchForm= this.fb.nonNullable.group({
-//   search: ''
-// });
-  constructor() {}
-  ngOnInit():void {
-    // this.fetchData();
+   // articles: ArticleInterface[] = [];
+   // searchForm: FormGroup;
+  constructor(private authService: AuthService,private fb: FormBuilder){
+  // this.searchForm = this.fb.group({
+  //   searchValue: '',
+  // });
+
+}
+  ngOnInit(): void {
+   
   }
-  
-  // fetchData(): void{
-  //   this.firebase.getCategorie(this.search)
-  //   .subscribe((categorie)=>{
-  //     this.categorie=categorie;
-  //   });
+// ngOnInit(): void {
+//   this.fetchData();
+// }
+// searchValue = '';
+//barra di ricerca nella dashboard
+  // fetchData():void {
+  //   const searchTerm = this.searchForm.value.searchValue.trim();
+  //   console.log("termine ricerca",searchTerm)
+  //   this.authService.getArticles(this.searchValue)
+  //   .subscribe((articles)  => {
+  //       this.articles = articles;
+  //     }
+  //   );
   // }
-  // onSearchSubmit(): void{
-  //   this.search=this.searchForm.value.search ?? '';
+  // fetchData(): void {
+  //   const searchTerm = this.searchForm.value.searchValue.trim();
+  //   console.log("termine ricerca", searchTerm);
+  //   this.authService.getArticles(searchTerm)
+  //     .subscribe((articles) => {
+  //       this.articles = articles;
+  //     });
+  // }
+
+  // onSearchSubmit(): void {
   //   this.fetchData();
   // }
+// onSearchSubmit(): void {
+//   this.searchValue = this.searchForm.value.searchValue ?? '';
+//   this.fetchData();
+// }
+//fine logica della barra di ricerca dashboard
+
 }

@@ -1,4 +1,5 @@
 export class User{
+  photoURL: any
     constructor(
         public nome: string,
         public  email: string,

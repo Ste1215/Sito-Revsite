@@ -11,7 +11,7 @@ export const AuthGuard: CanActivateFn = (
   | Promise<boolean | UrlTree>
   | boolean
   | UrlTree=> {
-    const isAuthenticated = inject(AuthService).isAuthenticated();
+    let isAuthenticated = inject(AuthService).isAuthenticated();
     if (isAuthenticated) {
       return true;
     } else {

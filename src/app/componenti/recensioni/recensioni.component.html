@@ -17,6 +17,7 @@
     <button mat-button mat-dialog-close  [disabled]="!nuovaRecensione" (click)="inviaRecensione()">invia recensione</button>
   </mat-dialog-actions>
   </div>
+  
   <div *ngIf="mostraMessaggio">
     <p>Grazie!, hai recensito correttamente {{negozioCorrente}}</p>
   </div>

@@ -21,6 +21,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import { CommonModule } from '@angular/common'; 
 import { Router } from '@angular/router';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 @Component({
   selector: 'app-recensioni',
   standalone: true,

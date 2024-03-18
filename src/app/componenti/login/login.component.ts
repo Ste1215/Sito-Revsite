@@ -8,6 +8,7 @@ import { AuthService } from '../../auth/auth.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
+import { getAuth, GoogleAuthProvider, signInWithPopup , AuthProvider} from 'firebase/auth';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   constructor(private authService: AuthService,private router: Router){}
   ngOnInit(): void {}
+  
   onSubmit(form: NgForm){
     this.loading=true;
     const email =form.value.email
@@ -44,9 +46,26 @@ export class LoginComponent implements OnInit {
       form.reset();
     });
   }
-  atLogin(){
+
+  async loginWithGoogle() {
+    const auth = getAuth();
+    const provider: AuthProvider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      console.log(result.user);
+      if (result && result.user) {
+        localStorage.setItem('user',JSON.stringify(result.user))
+        this.router.navigate(['/categorie']);
+    }
+    } catch (error) {
+      console.error(error);
+    }
+} 
+  
+atLogin(){
     this.router.navigate(['/register'])
   }
+
 
 
 }

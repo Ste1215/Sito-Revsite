@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { User } from '../modelli/user.models';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, map } from 'rxjs';
-
+import { ArticleInterface } from '../modelli/cercaArticoli.models';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService{
   recensioniCount: number = 0;
   recensioni: string[] = [];
 
@@ -26,11 +26,20 @@ export class AuthService {
     //   const recensioni = JSON.parse(recensioniLocalStorage);
     //   this.recensioniSubject.next(recensioni);
     // }
+  }// private apiUrl = 'https://revsite-7732b-default-rtdb.europe-west1.firebasedatabase.app/'; 
+
+  
 
 
-   }
-  // private apiUrl = 'https://revsite-7732b-default-rtdb.europe-west1.firebasedatabase.app/'; 
 
+
+  isUserSignedInWithGoogle(): boolean {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user && user.providerData) {
+      return user.providerData.some((provider: { providerId: string; }) => provider.providerId === 'google.com');
+    } 
+    return false;
+  }
 
   isAuthenticated(){
     return this.isLoggedIn
@@ -126,7 +135,14 @@ updateProfileImage(imageUrl: string): void {
     }
     return this.recensioniSubjects[categoria].asObservable();
   }
+ 
   
+
+  getArticles(searchValue: string): Observable<ArticleInterface[]> {
+    return this.http.get<ArticleInterface[]>(
+      `http://localhost:4200/categorie?search=${searchValue}`
+    );
+  }
 }
 export interface Recensione {
   testo: string;

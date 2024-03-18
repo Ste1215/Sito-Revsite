@@ -42,9 +42,7 @@ export class ElettronicaComponent implements OnInit{
   isElettronicaPage: boolean;
 @Input() categoria: string;
 @Input() identificatore: string;
-onValutazioniStreaming() {
- this.router.navigate(['/streaming/ValutazioniStreaming']); 
-}
+
   
   constructor(private route: ActivatedRoute,private router: Router,public authService: AuthService){}
   ngOnInit(): void {
@@ -119,7 +117,7 @@ gestisciNuovaRecensioneInviata(nuovaRecensione: string, negozio: string) {
    
    
    //this.recensioneInseritaDallUtente;
-   color= "orange";
+  color= "orange";
   onRecensioni(){
     this.router.navigate(['/recensioni']);
   }
@@ -129,4 +127,7 @@ gestisciNuovaRecensioneInviata(nuovaRecensione: string, negozio: string) {
   onValutazioni(){
     this.router.navigate(['/valutazioni']);
   }
+  onValutazioniStreaming() {
+ this.router.navigate(['/streaming/ValutazioniStreaming']); 
+}
 }

@@ -23,16 +23,16 @@ export class ValutazioniComponent implements OnInit {
   userNome: string;
   negozi: string[] = ['Mediaworld', 'Euronics', 'Unieuro'];
   recensioniPerNegozi: { [key: string]: Recensione[] } = {};
-        constructor(private authService: AuthService){}
+        constructor(public authService: AuthService){}
   ngOnInit(): void {
     this.negozi.forEach(negozio => {
       this.authService.getRecensioniByNegozio(negozio).subscribe(recensioni => {
         this.recensioniPerNegozi[negozio] = recensioni;
       });
     });
-
-
-
+  }
+   getNome(nome: string){
+    return nome;
   }
       // this.authService.getRecensioniByNegozio('Mediaworld').subscribe(recensioni => {
     //   this.recensioniMediaworld = recensioni;
@@ -41,10 +41,7 @@ export class ValutazioniComponent implements OnInit {
     // this.authService.getRecensioniByNegozio('Euronics').subscribe(recensioni => {
     //   this.recensioniEuronics = recensioni;
     // });
-  getNome(){
-    const nome= this.authService.user.nome;
-    return nome;
-  }
+ 
   
 
 }
