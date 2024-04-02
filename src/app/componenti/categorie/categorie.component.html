@@ -1,30 +1,23 @@
 <div class="container-img" [@fadeIn]>
     <h1>Trova aziende affidabili.Scrivi Recensioni.</h1>
 </div>
-<h1 [@fadeIn]>Scopri le categorie</h1>
+<router-outlet></router-outlet>
+<h1 id="destinazione" [@fadeIn]>Scopri le categorie</h1>
  <div class="categorie" [@fadeIn]>
-        <a class="btn-categorie" routerLink="/elettronica" mat-raised-button >
+        <a class="btn-categorie" routerLink="/dashboard/elettronica" mat-raised-button >
         <mat-icon>computer</mat-icon>
        <span>Elettronica</span> 
     </a>
-    <a class="btn-categorie" routerLink="/streaming" mat-raised-button >
+    <a class="btn-categorie" routerLink="/dashboard/streaming" mat-raised-button >
         <mat-icon>cast_connected</mat-icon>
        <span>Streaming</span>
     </a>
-    <a class="btn-categorie" routerLink="/E-commerce" mat-raised-button >
+    <a class="btn-categorie" routerLink="/dashboard/E-commerce" mat-raised-button >
         <mat-icon>business_center</mat-icon>
         <span>E-commerce</span>
     </a>
 </div> 
-<!-- <div class="container">
-    <form [formGroup]="searchForm" class="searchBar" (ngSubmit)="onSearchSubmit()">
-      <input type="text" placeholder="cerca..." formControlName="searchValue" class="searchBarInput" />
-    </form>
-    <div class="articlesTable">
-      <div class="article" *ngFor="let article of articles">
-        {{ article.title }}
-      </div>
-    </div>  
-  </div> -->
+
+
 
 

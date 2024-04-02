@@ -9,6 +9,10 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
 import { getAuth, GoogleAuthProvider, signInWithPopup , AuthProvider} from 'firebase/auth';
+import firebase from "firebase/compat/app";
+import { User } from '../../modelli/user.models';
+
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -32,14 +36,14 @@ export class LoginComponent implements OnInit {
   
   onSubmit(form: NgForm){
     this.loading=true;
-    const email =form.value.email
-    const password =form.value.password
+    const email =form.value.email;
+    const password =form.value.password;
     this.authService.signIn(email,password)
     .subscribe((data: any) => {
      const expirationDate = new Date(new Date().getTime() + data.expiresIn * 1000)
-      this.authService.createUser(data.nome, data.email, data.localId, data.idToken,data.expiresIn, 'assets/img/user.png',data.profileImageUrl)
+      this.authService.createUser(data.email, data.nome, data.localId, data.idToken,data.expiresIn, 'assets/img/user.png',data.profileImageUrl)
      localStorage.setItem('user',JSON.stringify(this.authService.user))
-     this.router.navigate(['/categorie']);
+     this.router.navigate(['/dashboard/categorie']);
     })
     .add(() => {
       this.loading = false;
@@ -47,21 +51,24 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  async loginWithGoogle() {
-    const auth = getAuth();
-    const provider: AuthProvider = new GoogleAuthProvider();
-    try {
-      const result = await signInWithPopup(auth, provider);
-      console.log(result.user);
-      if (result && result.user) {
-        localStorage.setItem('user',JSON.stringify(result.user))
-        this.router.navigate(['/categorie']);
-    }
-    } catch (error) {
-      console.error(error);
-    }
-} 
-  
+   async loginWithGoogle() {
+     const auth = getAuth();
+     const provider = new GoogleAuthProvider();
+     try {
+       const result = await signInWithPopup(auth, provider);
+       console.log(result.user);
+       if (result && result.user) {
+         localStorage.setItem('user', JSON.stringify({
+           displayName: result.user.displayName,
+           email: result.user.email,
+           photoURL: result.user.photoURL 
+         }));
+         this.router.navigate(['/dashboard/categorie']);
+     }
+     } catch (error) {
+       console.error(error);
+     }
+ } 
 atLogin(){
     this.router.navigate(['/register'])
   }

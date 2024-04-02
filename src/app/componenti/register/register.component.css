@@ -44,7 +44,15 @@
   box-shadow: #cff0ff 0px 10px 10px -5px;
   border-inline: 2px solid transparent;
 }
-
+.accedi-acc{
+  font-size: 11px;
+  color: #0099ff;
+  text-decoration: none;
+  cursor: pointer;
+  color:  rgb(16, 137, 211) 0%;
+  border: 0;
+  background: none;
+}
 .form .input::-moz-placeholder {
   color: rgb(170, 170, 170);
 }

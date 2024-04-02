@@ -5,5 +5,4 @@ import 'localstorage-polyfill';
 
 global['localStorage'] = localStorage;
 const bootstrap = () => bootstrapApplication(AppComponent, config);
-
 export default bootstrap;

@@ -1,3 +1,4 @@
+<div [ngClass]="themeService.themeSignal()">
 <mat-toolbar>
     <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
@@ -6,12 +7,14 @@
       <img src="/assets/img/RevSite-background.png" alt="Logo"><span style="cursor: pointer;" (click)="onHome()">evSite</span>
     </div>
     <span class="example-spacer"></span>
-    <div class="button-Sign">
-          <button mat-stroked-button class="signInButton" (click)="InLogin()">Sign in</button>
-    <button mat-stroked-button (click)="inRegister()">Sign Up</button>
+    <div class="button-Sign" *ngIf="!this.authService.isAuthenticated()">
+    <button mat-stroked-button class="signInButton" (click)="InLogin()">Sign in</button>
+    <button mat-stroked-button (click)="inRegister()">Sign Up</button> 
   </div>
-  </mat-toolbar>
-  <mat-drawer-container autosize >
+  <button mat-stroked-button (click)="inLogout()" *ngIf="this.authService.isAuthenticated()">Logout</button>
+</mat-toolbar>
+</div>
+  <mat-drawer-container autosize>
     <mat-drawer #drawer opened="false" mode="over" position="start" >
       <mat-nav-list>
         <mat-list-item>
@@ -20,7 +23,7 @@
             Crea il tuo Account!</button> 
           </mat-list-item>
           <mat-list-item>
-            <button class="button">
+            <button class="button" (click)="loginWithGitHub()">
               <svg fill="#212121" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28">
                 <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
                 <g
@@ -52,7 +55,7 @@
       <br>
       <h1>Scrivi recensioni.</h1>
       </div>
-      <footer>
+      <footer [ngClass]="themeService.themeSignal()">
           <app-footer></app-footer>
       </footer> 
     </mat-drawer-content>

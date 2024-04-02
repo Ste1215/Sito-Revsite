@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit,ViewChild } from '@angular/core';
 import {MatSidenavModule} from '@angular/material/sidenav'; 
 import {MatButtonModule} from '@angular/material/button';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -11,8 +11,6 @@ import {MatIconModule} from '@angular/material/icon';
 import { AuthService } from '../../auth/auth.service'; 
 import { CommonModule } from '@angular/common';
 import {MatMenuModule, MatMenuTrigger} from '@angular/material/menu';
-
-
 import {
   MatDialog,
   MatDialogActions,
@@ -22,6 +20,7 @@ import {
 } from '@angular/material/dialog';
 import { SettingsUserComponents } from './settings-user.component';
 import { ArticleInterface } from '../../modelli/cercaArticoli.models';
+import { ServiziService } from '../../servizi/servizi.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -43,30 +42,40 @@ import { ArticleInterface } from '../../modelli/cercaArticoli.models';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit {
+
   customImageSelected: boolean = false;
  isMenuVisible = false;
+  profileImageUrl: string;
  
 
 
 
-  constructor(public dialog: MatDialog,public authService: AuthService, private router: Router){ }
-
+  constructor(public dialog: MatDialog,public authService: AuthService, private router: Router,private servizi: ServiziService){ }
+  scrollToElement(): void {
+    this.servizi.scrollToElement('destinazione');
+  }
   openDialog() {
     this.dialog.open(SettingsUserComponents);
   }
-  ngOnInit(): void {
-    if(this.authService.isAuthenticated() === true){
-        this.router.navigate(["/categorie"]);   
-      }else{
-      this.router.navigate(["/"]);  
+ngOnInit(): void {
+  if(this.authService.isAuthenticated()){
+    this.router.navigate(['/dashboard/categorie']);   
   }
-  const isGoogleSignIn = this.authService.isUserSignedInWithGoogle();
-   if(isGoogleSignIn){
-    this.router.navigate(["/categorie"]);
-   }else{
-    this.router.navigate(["/"]);  
+  else{
+  this.router.navigate(['/'])  
 }
+    // const isGoogleSignIn = this.authService.isUserSignedInWithGoogle();
+    // if (isGoogleSignIn) {
+    //   this.router.navigate(['/dashboard/categorie']);else {
+    //  this.router.navigate(['/'])  
+    //  }
+   const userData = localStorage.getItem('user');
+     if (userData) {
+       const user = JSON.parse(userData);
+       this.profileImageUrl = user.photoURL;
+     }
 }
+
 
 
 
@@ -80,6 +89,6 @@ toggleMenu() {
     this.authService.pathLogin();
   }
   onCategorie(){
-    this.router.navigate(['/categorie']);
+    this.router.navigate(['/dashboard/categorie']);
   }
 }

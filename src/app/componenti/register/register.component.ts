@@ -34,12 +34,13 @@ export class RegisterComponent implements OnInit{
     .subscribe((data: any) => {
       console.log(data)
     })
-    form.reset()
+    form.reset();
+    this.router.navigate(['/login']);
   }
   atLogin(){
     this.router.navigate(['/login'])
   }
   atHome(){
-    this.router.navigate(['/homepage'])
+    this.router.navigate(['/'])
   }
 }

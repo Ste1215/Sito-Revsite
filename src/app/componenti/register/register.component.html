@@ -10,7 +10,7 @@
     <input placeholder="Password" id="password" class="input" type="password" name="password" ngModel required/>
     <button mat-button class="login-button" value="Sign In" type="submit" [disabled]="!registerform.valid">Registrati</button>
   </form>
-  <button mat-flat-button (click)="atLogin()">Accedi al tuo Account</button><br>
-  <a style="cursor: pointer;  color: black; text-decoration: underline;"  (click)="atHome()">Torna alla home</a>
+  <button class="accedi-acc" (click)="atLogin()">Accedi al tuo Account</button><br>
+  <a style=" display: block ; cursor: pointer;  color: black; text-decoration: underline; text-align: center;"  (click)="atHome()">Torna alla home</a>
 </div>
 </div>

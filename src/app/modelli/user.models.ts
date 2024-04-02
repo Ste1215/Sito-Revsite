@@ -1,8 +1,7 @@
 export class User{
-  photoURL: any
     constructor(
-        public nome: string,
         public  email: string,
+        public nome: string,
         public  id: string,
         private _token: string,
         private _expirationDate: Date,

@@ -92,10 +92,7 @@ export class ElettronicaComponent implements OnInit{
       }
     });
     
-  }
-    // this.authService.recensione$.subscribe(recensione => {
-    //   this.recensioneInseritaDallUtente = recensione;
-    // });
+}
 gestisciNuovaRecensioneInviata(nuovaRecensione: string, negozio: string) {
       this.numeroRecensioni++;
       const recensione: Recensione = {

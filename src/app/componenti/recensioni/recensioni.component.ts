@@ -48,8 +48,11 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 })
 export class RecensioniComponent implements OnInit{
   @Output() recensioneInviata = new EventEmitter<string>();
-  recensioni: string[] = [];
-  ngOnInit(): void {}
+  // recensioni: string[] = [];
+  recensioni: { testo: string; negozio: string; }[] = [];
+
+  ngOnInit(): void {
+  }
   constructor(private authService: AuthService,private router: Router) {}
   mostraRecensione: boolean = false;
   mostraBottone: boolean = true;
@@ -58,12 +61,7 @@ export class RecensioniComponent implements OnInit{
   mostraMessaggio:boolean=false;
   mostraMessaggioValutazioni:boolean=false;
 
-  pathSteamingCategoria(){
-    this.router.navigate(['/recensioni/recensioneStreaming']);
-  }
-  onValutazioni(){
-this.router.navigate(['/valutazioni']);
-  }
+
 
   selezionaNegozio(negozio: string){
     this.negozioCorrente = negozio;
@@ -73,7 +71,10 @@ this.router.navigate(['/valutazioni']);
     this.recensioneInviata.emit(this.nuovaRecensione);
     // reset del textArea (dove inserisco la recensione)
     if (this.nuovaRecensione.trim() !== '') {
-      this.authService.aggiungiRecensione({ testo: this.nuovaRecensione, negozio: this.negozioCorrente  });
+    const nuovaRecensione ={ testo: this.nuovaRecensione, negozio: this.negozioCorrente  };
+      this.authService.aggiungiRecensione(nuovaRecensione);
+      this.recensioni.push(nuovaRecensione);
+      // localStorage.setItem('recensioni', JSON.stringify(this.recensioni));
       this.nuovaRecensione = '';
     }
     this.mostraMessaggio=true;
@@ -83,22 +84,11 @@ this.router.navigate(['/valutazioni']);
       this.mostraMessaggioValutazioni= false;
     }, 4000);
   }
-
-
-  //versione vecchia funzionante ma dove il conteggio aumentava anche dove non ho messo una recensione
-    // inviaRecensione() {
-  //   // evento con la nuova recensione
-  //   this.recensioneInviata.emit(this.nuovaRecensione);
-  //   //reset del textArea (dove inserisco la recensione)
-  //   if (this.nuovaRecensione.trim() !== '') {
-  //   this.authService.inviaRecensione(this.nuovaRecensione);
-  //   this.authService.aggiungiRecensione({testo: this.nuovaRecensione,negozio:'Mediaworld'});
-  //   this.nuovaRecensione='';
-  //   }
-  // }
-
-  // pathCategorie(){
-  //   this.authService.pathCategorie()
-  // }
+  pathSteamingCategoria(){
+    this.router.navigate(['/dashboard/recensioni/recensioneStreaming']);
+  }
+  onValutazioni(){
+    this.router.navigate(['/dashboard/valutazioni']);
+  }
 
 }

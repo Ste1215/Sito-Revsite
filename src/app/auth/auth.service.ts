@@ -5,14 +5,17 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { ArticleInterface } from '../modelli/cercaArticoli.models';
 
+
+export interface Recensione {
+  testo: string;
+  negozio: string;
+}
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService{
   recensioniCount: number = 0;
   recensioni: string[] = [];
-
-
   APIkey='AIzaSyBIFfzsHEY-ECfG-We8Ia57ZdLJ0vuaugk'
   signUpURL=`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${this.APIkey}`
   signInURL=`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.APIkey}`
@@ -20,7 +23,6 @@ export class AuthService{
   user : User
 
   constructor(private http: HttpClient, private router: Router) {
-//caricare le recensioni salvate  nel localStorage quando c'è l'inizializzazione
     // const recensioniLocalStorage = localStorage.getItem('recensioni');
     // if (recensioniLocalStorage) {
     //   const recensioni = JSON.parse(recensioniLocalStorage);
@@ -33,13 +35,21 @@ export class AuthService{
 
 
 
-  isUserSignedInWithGoogle(): boolean {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (user && user.providerData) {
-      return user.providerData.some((provider: { providerId: string; }) => provider.providerId === 'google.com');
-    } 
-    return false;
-  }
+   isUserSignedInWithGoogle(): boolean {
+     const user = JSON.parse(localStorage.getItem('user'));
+     if (user && user.providerData) {
+       return user.providerData.some((provider: { providerId: string; }) => provider.providerId === 'google.com');
+     } 
+     return false;
+   }
+  //  isUserSignedInWithGitHub(): boolean {
+  //    const user = JSON.parse(localStorage.getItem('user'));
+  //    if (user && user.providerData) {
+  //      return user.providerData.some((provider: { providerId: string; }) => provider.providerId === 'github.com');
+  //    } 
+  //    return false;
+  //  }
+
 
   isAuthenticated(){
     return this.isLoggedIn
@@ -53,7 +63,7 @@ export class AuthService{
 
   createUser(nome: string,email: string, id: string, token: string, expirationDate: Date, profileImage: string,profileImageUrl: string){
     this.user = new User(nome || 'default',email,id,token,expirationDate,profileImage,profileImageUrl);
-    this.isLoggedIn = true
+    this.isLoggedIn = true;
   }
   getId(){
     return this.user.id;
@@ -62,7 +72,7 @@ export class AuthService{
     this.isLoggedIn= false
     this.user= null
     localStorage.removeItem('user')
-    this.router.navigate(['/homepage'])
+    this.router.navigate(['/'])
   }
 useDefaultProfileImage(): void {
   this.user.profileImage = 'assets/img/user.png';
@@ -122,8 +132,6 @@ updateProfileImage(imageUrl: string): void {
     const recensioniAttuali = this.recensioniSubjects[negozio].value;
     const nuoveRecensioni = [...recensioniAttuali, recensione];
     this.recensioniSubjects[negozio].next(nuoveRecensioni);
-    // salvarle in localStorage
-    // localStorage.setItem('recensioni', JSON.stringify(nuoveRecensioni));
   }
 
   inviaRecensione(recensione: Recensione) {
@@ -143,8 +151,4 @@ updateProfileImage(imageUrl: string): void {
       `http://localhost:4200/categorie?search=${searchValue}`
     );
   }
-}
-export interface Recensione {
-  testo: string;
-  negozio: string;
 }

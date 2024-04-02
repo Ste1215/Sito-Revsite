@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { trigger, state, style, animate, transition } from '@angular/animations';
@@ -12,6 +12,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { CategorieInterface } from '../../modelli/categorie.models';
 import {  ReactiveFormsModule } from '@angular/forms';
 import { ArticleInterface } from '../../modelli/cercaArticoli.models';
+import { ServiziService } from '../../servizi/servizi.service';
 @Component({
   selector: 'app-categorie',
   standalone: true,
@@ -36,47 +37,17 @@ import { ArticleInterface } from '../../modelli/cercaArticoli.models';
   ],
 })
 export class CategorieComponent implements OnInit  {
-   // articles: ArticleInterface[] = [];
-   // searchForm: FormGroup;
-  constructor(private authService: AuthService,private fb: FormBuilder){
-  // this.searchForm = this.fb.group({
-  //   searchValue: '',
-  // });
 
-}
+  constructor(private servizi: ServiziService,private elRef: ElementRef){}
   ngOnInit(): void {
-   
+    this.servizi.scrollToElement$.subscribe(id => {
+      if (id) {
+        const element = this.elRef.nativeElement.querySelector('#' + id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
   }
-// ngOnInit(): void {
-//   this.fetchData();
-// }
-// searchValue = '';
-//barra di ricerca nella dashboard
-  // fetchData():void {
-  //   const searchTerm = this.searchForm.value.searchValue.trim();
-  //   console.log("termine ricerca",searchTerm)
-  //   this.authService.getArticles(this.searchValue)
-  //   .subscribe((articles)  => {
-  //       this.articles = articles;
-  //     }
-  //   );
-  // }
-  // fetchData(): void {
-  //   const searchTerm = this.searchForm.value.searchValue.trim();
-  //   console.log("termine ricerca", searchTerm);
-  //   this.authService.getArticles(searchTerm)
-  //     .subscribe((articles) => {
-  //       this.articles = articles;
-  //     });
-  // }
-
-  // onSearchSubmit(): void {
-  //   this.fetchData();
-  // }
-// onSearchSubmit(): void {
-//   this.searchValue = this.searchForm.value.searchValue ?? '';
-//   this.fetchData();
-// }
-//fine logica della barra di ricerca dashboard
 
 }

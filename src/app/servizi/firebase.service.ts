@@ -14,13 +14,7 @@ export class FirebaseService {
 
 
   constructor(private http: HttpClient,private authService: AuthService) {}
-  
 
-  // getCategorie(search: string): Observable<CategorieInterface[]>{
-  //   return this.http.get<CategorieInterface[]>(
-  //       `http://localhost:4200/categorie?title_like=${search}`
-  //   );
-  // }
 
   insertPersona(url: string,body: {} ){
     return this.http.post(url, body)

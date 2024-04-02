@@ -24,7 +24,7 @@ mat-list-item button{
     flex: 1 1 auto;
 }
   .intro-section {
-    background: url("../../../assets/img/recensioni.jpg")no-repeat;
+    /* background: url("../../../assets/img/recensioni.jpg")no-repeat; */
     background-size: 100% ;
     text-align: center; padding:10px; margin:0px; min-height:600px; width:100%; 
     display:flex; flex-direction:column;
@@ -153,3 +153,13 @@ mat-list-item button{
   fill: #f09f33;
   transition: 0.3s ease;
 }
+.group {
+  display: flex;
+  line-height: 28px;
+  align-items: center;
+  position: relative;
+  max-width: 190px;
+  border-radius: 30px !important;
+}
+
+

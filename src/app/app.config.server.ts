@@ -2,13 +2,11 @@ import { mergeApplicationConfig, ApplicationConfig } from '@angular/core';
 import { provideServerRendering } from '@angular/platform-server';
 import { appConfig } from './app.config';
 import { initializeApp } from 'firebase/app';
-
+import firebase from 'firebase/compat';
 const serverConfig: ApplicationConfig = {
   providers: [
     provideServerRendering(),
-    
   ]
-  
 };
 const firebaseConfig = {
   apiKey: "AIzaSyBIFfzsHEY-ECfG-We8Ia57ZdLJ0vuaugk",
@@ -19,5 +17,4 @@ const firebaseConfig = {
   messagingSenderId: "548196603349",
   appId: "1:548196603349:web:b2892ea42e5e0372e6595c"
 };
-const app = initializeApp(firebaseConfig);
 export const config = mergeApplicationConfig(appConfig, serverConfig);

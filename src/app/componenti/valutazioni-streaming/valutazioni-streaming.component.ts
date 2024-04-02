@@ -27,6 +27,5 @@ export class ValutazioniStreamingComponent {
   }
   getNome(){
     return this.authService.user.nome;
-  
   }
 }

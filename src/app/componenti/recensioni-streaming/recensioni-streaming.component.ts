@@ -53,10 +53,10 @@ export class RecensioniStreamingComponent implements OnInit {
     this.negozioCorrente = negozio;
   }
   OnValutazioniStreaming(){
-    this.router.navigate(['/streaming/ValutazioniStreaming']);
+    this.router.navigate(['/dashboard/streaming/ValutazioniStreaming']);
   }
   OnRecensioniElettronica(){
-    this.router.navigate(['/recensioni']);
+    this.router.navigate(['/dashboard/recensioni']);
   }
   inviaRecensione() {
     this.recensioneInviata.emit(this.nuovaRecensione);

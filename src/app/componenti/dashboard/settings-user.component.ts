@@ -17,7 +17,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 @Component({
     selector: 'settings-user',
-    templateUrl: 'settings-user.html',
+    styleUrl: 'settings-user.component.css',
+    templateUrl: 'settings-user.component.html',
   standalone: true,
   imports: [
     MatListModule,
@@ -31,8 +32,6 @@ import { MatIconModule } from '@angular/material/icon';
        MatButtonModule,
        MatFormFieldModule,
     ],
-    styleUrl: 'settings-user.css',
-
 })
 
 export class SettingsUserComponents implements OnInit {

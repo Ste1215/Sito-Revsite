@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -9,12 +9,17 @@ import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { FooterComponent } from "../footer/footer.component";
+import firebase from "firebase/compat/app";
+import { CommonModule } from "@angular/common";
+import { ThemeService } from '../../servizi/theme.service';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 @Component({
     selector: 'app-home',
     standalone: true,
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
     imports: [
+        MatSlideToggleModule,
         RouterModule,
         MatListModule,
         MatSidenavModule,
@@ -22,12 +27,22 @@ import { FooterComponent } from "../footer/footer.component";
         MatButtonModule,
         MatToolbarModule,
         MatGridListModule,
-        FooterComponent
+        FooterComponent,
+        CommonModule,
+        MatButtonModule, 
+        MatIconModule,
+
     ]
 })
 export class HomeComponent {
-  constructor(private authService: AuthService, private router: Router) {}
-  
+  constructor(public authService: AuthService, private router: Router) {}
+  loginWithGitHub(){
+    const provider = new firebase.auth.GithubAuthProvider();
+    firebase.auth().signInWithPopup(provider)
+      .then(() => {
+        this.router.navigate(['/dashboard/categorie']);
+      })
+  }
   InLogin(){
     this.authService.pathLogin();
   }
@@ -38,6 +53,12 @@ export class HomeComponent {
     this.authService.pathRegister();
   }
   onHome(){
-    this.router.navigate(['/homapage']);
+    this.router.navigate(['/']);
   }
+
+  themeService: ThemeService = inject(ThemeService);
+  toggleTheme() {
+    this.themeService.updateTheme();
+  }
+  
 }

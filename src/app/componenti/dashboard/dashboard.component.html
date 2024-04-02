@@ -1,19 +1,20 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
       <mat-toolbar style="background-color: #1976d2;">
         <div class="logo"> 
           <img  (click)="onCategorie()" src="../../../assets/img/RevSite-background.png" alt="Logo" width="72px" height="72px"/>
         </div>
       <div class="dashboard-btn">
-        <button mat-button routerLink="categorie"  [routerLinkActive]="'categorie'"><mat-icon>category</mat-icon>Categorie</button>
+        <button mat-button routerLink="categorie"  [routerLinkActive]="'categorie'" (click)="scrollToElement()"><mat-icon>category</mat-icon>Categorie</button>
         <button mat-button routerLink="recensioni" [routerLinkActive]="'categorie'"><mat-icon>reviews</mat-icon>Recensioni</button>
-        <button mat-button routerLink="pagina3"    [routerLinkActive]="'categorie'">Pagina 3</button>
+        <button mat-button routerLink="piani"      [routerLinkActive]="'categorie'">Piani</button>
       </div>
-            <span class="example-spacer"></span>
+          <span class="example-spacer"></span>
         <div class="profile-container" (click)="toggleMenu()">
               <button mat-button [matMenuTriggerFor]="menu" style="clip-path: circle(50%);" >
-                <img [src]="authService.user.profileImage" alt="Default"/>
-                <!-- <img [src]="authService.user.profileImage" alt="Default"/> -->
+                <img *ngIf="authService.isAuthenticated()" [src]="authService.user.profileImage" alt="Default"/>
+               <div *ngIf="profileImageUrl">
+                <img [src]="profileImageUrl" alt="Immagine google">
+              </div>              
               </button>
               <mat-menu #menu="matMenu" >
                 <button mat-menu-item (click)="openDialog()">
@@ -27,4 +28,5 @@
               </mat-menu>
         </div> 
       </mat-toolbar>
-        <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
+          
