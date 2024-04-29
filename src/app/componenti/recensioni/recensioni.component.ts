@@ -48,11 +48,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 })
 export class RecensioniComponent implements OnInit{
   @Output() recensioneInviata = new EventEmitter<string>();
-  // recensioni: string[] = [];
-  recensioni: { testo: string; negozio: string; }[] = [];
-
-  ngOnInit(): void {
-  }
+  recensioni: {testo: string; negozio: string;}[] = [];
+  ngOnInit(): void {}
   constructor(private authService: AuthService,private router: Router) {}
   mostraRecensione: boolean = false;
   mostraBottone: boolean = true;
@@ -71,11 +68,15 @@ export class RecensioniComponent implements OnInit{
     this.recensioneInviata.emit(this.nuovaRecensione);
     // reset del textArea (dove inserisco la recensione)
     if (this.nuovaRecensione.trim() !== '') {
-    const nuovaRecensione ={ testo: this.nuovaRecensione, negozio: this.negozioCorrente  };
+      const negozio = this.negozioCorrente;
+      if (this.recensioni.filter(recensione => recensione.negozio === negozio).length < 10) {
+    const nuovaRecensione ={ testo: this.nuovaRecensione, negozio: this.negozioCorrente};
       this.authService.aggiungiRecensione(nuovaRecensione);
       this.recensioni.push(nuovaRecensione);
-      // localStorage.setItem('recensioni', JSON.stringify(this.recensioni));
       this.nuovaRecensione = '';
+      }else{
+        alert('sei arrivato ad un massimo di 10 recensioni, sblocca il piano pro per avere recensioni illimitate')
+      }
     }
     this.mostraMessaggio=true;
     this.mostraMessaggioValutazioni=true;

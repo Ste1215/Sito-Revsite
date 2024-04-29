@@ -13,35 +13,58 @@ import { CategorieInterface } from '../../modelli/categorie.models';
 import {  ReactiveFormsModule } from '@angular/forms';
 import { ArticleInterface } from '../../modelli/cercaArticoli.models';
 import { ServiziService } from '../../servizi/servizi.service';
+import { CarouselComponent } from "../carousel/carousel.component";
+
+const enterTransition = transition(':enter',[
+  style({
+    opacity: 0,
+  }),
+  animate('1s ease-in',style({opacity: 1})),
+]);
+const exitTransition = transition(':leave',[
+  style({
+    opacity: 1,
+  }),
+  animate('1s ease-out',style({opacity: 0})),
+]);
+const fadeIn =trigger('fadeIn',[enterTransition]);
+const fadeOut =trigger('fadeOut',[exitTransition]);
 @Component({
-  selector: 'app-categorie',
-  standalone: true,
-  imports: [
-    MatTabsModule,
-    FormsModule,
-    RouterModule,
-    MatIconModule,
-    MatToolbarModule,
-    CommonModule,
-    ReactiveFormsModule,
-  ],
-  templateUrl: './categorie.component.html',
-  styleUrl: './categorie.component.css',
-  animations:[
-    trigger('fadeIn', [
-      state('void', style({ opacity: 0 })),
-      transition(':enter', [
-        animate('850ms ease-in', style({ opacity: 1 })),
-      ]),
-    ]),
-  ],
+    selector: 'app-categorie',
+    standalone: true,
+    templateUrl: './categorie.component.html',
+    styleUrl: './categorie.component.css',
+    animations: [fadeIn, fadeOut],
+    imports: [
+        MatTabsModule,
+        FormsModule,
+        RouterModule,
+        MatIconModule,
+        MatToolbarModule,
+        CommonModule,
+        ReactiveFormsModule,
+        CarouselComponent
+    ]
 })
 export class CategorieComponent implements OnInit  {
 
   constructor(private servizi: ServiziService,private elRef: ElementRef){}
+  slides: any[] =[
+    {
+      url: 'assets/img/sliderImg.jpg',
+    },
+    {
+      url: 'assets/img/sliderImg3.png',
+    },
+    {
+      url: 'assets/img/sliderImg2.jpg',
+    },
+  ];
+  
+  
   ngOnInit(): void {
     this.servizi.scrollToElement$.subscribe(id => {
-      if (id) {
+      if (id){
         const element = this.elRef.nativeElement.querySelector('#' + id);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });

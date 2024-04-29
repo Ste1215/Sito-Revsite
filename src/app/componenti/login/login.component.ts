@@ -31,7 +31,7 @@ import { User } from '../../modelli/user.models';
 export class LoginComponent implements OnInit {
   hide = true;
   loading = false;
-  constructor(private authService: AuthService,private router: Router){}
+  constructor(public authService: AuthService,private router: Router){}
   ngOnInit(): void {}
   
   onSubmit(form: NgForm){

@@ -12,7 +12,7 @@ import { SnackBarComponent } from './snackbar.component';
     MatIconModule,
     CommonModule,
   ],
-  templateUrl: './pagina3.component.html',
+  templateUrl:'./pagina3.component.html',
   styleUrl: './pagina3.component.css'
 })
 export class PianiAcquistoComponent {
@@ -22,22 +22,26 @@ export class PianiAcquistoComponent {
   prezzo: "€ 0", 
   acquistato: "in possesso",
   descrizione:"piano gratuito",
-  caratteristiche:`fino a 10 recensioni al giorno`},
+  caratteristiche:`fino a 10 recensioni al giorno`,
+  caratteristiche2:`fino a 10 recensioni al giorno`,
+},
 
-  {
-  tipo: "Piano Premium",
+  {tipo: "Piano Premium",
   prezzo: "€ 20.99",
   acquistato: "acquistabile",
   descrizione:"Piano Premium",
   caratteristiche:`Recensioni illimitate`,
+  caratteristiche2:`fino a 10 recensioni al giorno`,
 },
 
-  {
-  tipo: "Piano Pro",
+  {tipo: "Piano Pro",
   prezzo: "€ 39.99",
   acquistato: "acquistabile",
   descrizione:"Piano Pro",
-  caratteristiche: "accesso a tutte le categorie"},
+  caratteristiche: "accesso a tutte le categorie",
+  caratteristiche2:`fino a 10 recensioni al giorno`,
+},
+ 
 ]
 constructor(private _snackBar: MatSnackBar) {}
   

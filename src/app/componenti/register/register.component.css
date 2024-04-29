@@ -25,12 +25,12 @@
 
 .heading {
   text-align: center;
-  font-weight: 800;
-  font-size: 30px;
+  font-weight: 600;
+  font-size: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom:15px;
+  margin-bottom:10px;
   color: rgb(16, 137, 211);
 }
 

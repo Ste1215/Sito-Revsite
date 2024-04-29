@@ -26,12 +26,6 @@ import { ThemeService } from './servizi/theme.service';
         FooterComponent,
         CategorieComponent
     ],
-    template:` 
-    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="background-color: white;">
-    <button ngbDropdownItem (click)="changeTheme('light')">Light</button>
-    <button ngbDropdownItem (click)="changeTheme('dark')">Dark</button>
-    </div>
-   `,
 })
 export class AppComponent implements OnInit{
   title = 'REVSITE';
@@ -43,8 +37,7 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     if(localStorage.getItem('user')){
       const user = JSON.parse(localStorage.getItem('user'))
-      this.authService.createUser(user.email,user.nome, user.id, user._token, user._expirationDate, 'assets/img/user.png', user.profileImageUrl);
-    console.log(this.authService.user)
+      this.authService.createUser(user.email,user.nome, user.id, user._token, user._expirationDate, user.profileImage, user.profileImageUrl);
     }
   }
  onLogout(){

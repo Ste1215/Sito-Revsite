@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit,ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit,Renderer2,ViewChild } from '@angular/core';
 import {MatSidenavModule} from '@angular/material/sidenav'; 
 import {MatButtonModule} from '@angular/material/button';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,12 +21,18 @@ import {
 import { SettingsUserComponents } from './settings-user.component';
 import { ArticleInterface } from '../../modelli/cercaArticoli.models';
 import { ServiziService } from '../../servizi/servizi.service';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [
     CommonModule,
+    MatTooltipModule,
+    MatDatepickerModule,
+    MatExpansionModule,
     ReactiveFormsModule,
     MatMenuModule,
     MatIconModule,
@@ -42,53 +48,58 @@ import { ServiziService } from '../../servizi/servizi.service';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit {
-
-  customImageSelected: boolean = false;
- isMenuVisible = false;
-  profileImageUrl: string;
- 
-
-
-
-  constructor(public dialog: MatDialog,public authService: AuthService, private router: Router,private servizi: ServiziService){ }
+  @ViewChild('profil') profilRef: ElementRef;
+customImageSelected: boolean = false;
+isMenuVisible: boolean = false;
+profileImageUrlGoogle: string;
+EmailGoogle:string;
+panelOpenState = false;
+GetEmailGoogle(){
+   const userDataGoogle=localStorage.getItem('user');
+  if(userDataGoogle){
+      const user = JSON.parse(userDataGoogle);
+       this.EmailGoogle = user.email;
+  }
+}
+  constructor(private renderer: Renderer2,private elementRef: ElementRef,public authService: AuthService, private router: Router,private servizi: ServiziService){ }
   scrollToElement(): void {
     this.servizi.scrollToElement('destinazione');
   }
-  openDialog() {
-    this.dialog.open(SettingsUserComponents);
-  }
-ngOnInit(): void {
+
+ngOnInit(): void { 
+    const userData = localStorage.getItem('user');
+     if (userData) {
+       const user = JSON.parse(userData);
+       this.profileImageUrlGoogle = user.photoURL;
+     }
   if(this.authService.isAuthenticated()){
     this.router.navigate(['/dashboard/categorie']);   
   }
-  else{
-  this.router.navigate(['/'])  
-}
-    // const isGoogleSignIn = this.authService.isUserSignedInWithGoogle();
-    // if (isGoogleSignIn) {
-    //   this.router.navigate(['/dashboard/categorie']);else {
-    //  this.router.navigate(['/'])  
-    //  }
-   const userData = localStorage.getItem('user');
-     if (userData) {
-       const user = JSON.parse(userData);
-       this.profileImageUrl = user.photoURL;
-     }
-}
-
-
-
-
-toggleMenu() {
-    this.isMenuVisible = !this.isMenuVisible;
-}
-  onLogOut(){
-    this.authService.logout();   
-  }
-  pathLogin(){
-    this.authService.pathLogin();
-  }
-  onCategorie(){
+  else if(this.authService.isUserSignedInWithGoogle()){
     this.router.navigate(['/dashboard/categorie']);
+  }else{
+  this.router.navigate(['/']) 
   }
+}
+toggleMenu() {
+  this.isMenuVisible = !this.isMenuVisible;
+}
+closeMenu() {
+  this.isMenuVisible = false;
+}
+menuClick(event: MouseEvent) {
+  event.stopPropagation(); 
+}
+onLogOut(){
+    this.authService.logout();   
+}
+pathLogin(){
+    this.authService.pathLogin();
+}
+onCategorie(){
+    this.router.navigate(['/dashboard/categorie']);
+}
+onHome(){
+    this.router.navigate(['/']);
+}
 }

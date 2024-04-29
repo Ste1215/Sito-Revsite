@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { User } from '../modelli/user.models';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, throwError } from 'rxjs';
 import { ArticleInterface } from '../modelli/cercaArticoli.models';
 
 
@@ -21,6 +21,7 @@ export class AuthService{
   signInURL=`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.APIkey}`
   isLoggedIn: boolean;
   user : User
+  credenzialiErrate: boolean=false;
 
   constructor(private http: HttpClient, private router: Router) {
     // const recensioniLocalStorage = localStorage.getItem('recensioni');
@@ -42,14 +43,6 @@ export class AuthService{
      } 
      return false;
    }
-  //  isUserSignedInWithGitHub(): boolean {
-  //    const user = JSON.parse(localStorage.getItem('user'));
-  //    if (user && user.providerData) {
-  //      return user.providerData.some((provider: { providerId: string; }) => provider.providerId === 'github.com');
-  //    } 
-  //    return false;
-  //  }
-
 
   isAuthenticated(){
     return this.isLoggedIn
@@ -59,6 +52,15 @@ export class AuthService{
   }
   signIn(email: string, password: string): Observable<any>{
     return this.http.post(this.signInURL,{email: email, password: password, returnSecureToken: true})
+    .pipe(
+      catchError((error: any) => {
+        this.credenzialiErrate = true;
+        setTimeout(() => {
+          this.credenzialiErrate = false;
+        }, 3000);
+        return throwError(() => error);
+      })
+    );
   }
 
   createUser(nome: string,email: string, id: string, token: string, expirationDate: Date, profileImage: string,profileImageUrl: string){
@@ -67,6 +69,15 @@ export class AuthService{
   }
   getId(){
     return this.user.id;
+  }
+  getNameFromEmail(email: string){
+    const parts =email.split('@');
+    const username = parts[0];
+    if (username.includes('.')) {
+        return username.split('.')[0];
+    } else {
+        return username;
+    }
   }
   logout(){
     this.isLoggedIn= false
@@ -142,13 +153,5 @@ updateProfileImage(imageUrl: string): void {
       this.recensioniSubjects[categoria] = new BehaviorSubject<Recensione[]>([]);
     }
     return this.recensioniSubjects[categoria].asObservable();
-  }
- 
-  
-
-  getArticles(searchValue: string): Observable<ArticleInterface[]> {
-    return this.http.get<ArticleInterface[]>(
-      `http://localhost:4200/categorie?search=${searchValue}`
-    );
   }
 }

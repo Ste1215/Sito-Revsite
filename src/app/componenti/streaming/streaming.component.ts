@@ -23,7 +23,7 @@ export class StreamingComponent implements OnInit {
   categoria: string;
   constructor(private router: Router,private route: ActivatedRoute, private authService: AuthService) { }
   onRecensioni() {
-    this.router.navigate(['/recensioni/recensioneStreaming']);
+    this.router.navigate(['/dashboard/recensioni/recensioneStreaming']);
   }
   
   ngOnInit(): void {

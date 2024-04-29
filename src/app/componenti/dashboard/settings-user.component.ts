@@ -15,6 +15,7 @@ import { AuthService } from '../../auth/auth.service';
 import {MatListModule} from '@angular/material/list'; 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
 @Component({
     selector: 'settings-user',
     styleUrl: 'settings-user.component.css',
@@ -30,7 +31,7 @@ import { MatIconModule } from '@angular/material/icon';
       MatDialogActions,
        MatDialogClose, 
        MatButtonModule,
-       MatFormFieldModule,
+       MatFormFieldModule,CommonModule,
     ],
 })
 
@@ -41,7 +42,7 @@ export class SettingsUserComponents implements OnInit {
   userId: string = '';
   userNome: string = '';
   customImageSelected: boolean = false;
-  constructor(private authService: AuthService) {}
+  constructor(public  authService: AuthService) {}
 
   GetNome(){
    return this.userNome= this.authService.user.nome;

@@ -35,7 +35,7 @@ export class ElettronicaComponent implements OnInit{
   aziende=[
     {nome: "Youtube", numeroRecensioni: 0},
     {nome: "Twitch", numeroRecensioni: 0},
-    {nome: "Altadefinizione", numeroRecensioni: 0},
+    {nome: "Netflix", numeroRecensioni: 0},
   ]  
   numeroRecensioni: number = 0;
   recensioneInseritaDallUtente: string;
@@ -80,7 +80,7 @@ export class ElettronicaComponent implements OnInit{
     this.authService.getRecensioniByNegozio('Twitch').subscribe(recensioni => {
       this.aziende[1].numeroRecensioni = recensioni.length;
     });
-    this.authService.getRecensioniByNegozio('Altadefinizione').subscribe(recensioni => {
+    this.authService.getRecensioniByNegozio('Netflix').subscribe(recensioni => {
       this.aziende[2].numeroRecensioni = recensioni.length;
     });
     this.authService.recensione$.subscribe(recensione => {
@@ -116,15 +116,15 @@ gestisciNuovaRecensioneInviata(nuovaRecensione: string, negozio: string) {
    //this.recensioneInseritaDallUtente;
   color= "orange";
   onRecensioni(){
-    this.router.navigate(['/recensioni']);
+    this.router.navigate(['/dashboard/recensioni']);
   }
   onRecensioniStreaming(){
-    this.router.navigate(['/recensioni/recensioneStreaming']);
+    this.router.navigate(['/dashboard/recensioni/recensioneStreaming']);
   }
   onValutazioni(){
-    this.router.navigate(['/valutazioni']);
+    this.router.navigate(['/dashboard/valutazioni']);
   }
   onValutazioniStreaming() {
- this.router.navigate(['/streaming/ValutazioniStreaming']); 
+ this.router.navigate(['/dashboard/streaming/ValutazioniStreaming']); 
 }
 }

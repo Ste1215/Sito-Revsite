@@ -53,3 +53,60 @@
   padding: 0;
   cursor: pointer;
 }
+
+.profile-container .profil {
+  position: absolute;
+  right: 0;
+  background-color: rgb(37, 37, 37);
+  color: white;
+  padding: 20px;
+  border-radius: 25px;
+  display: none;
+  height: 400px;
+  width: 400px;
+  overflow: scroll;
+}
+.profile-container .profil.visible  {
+  display: block;
+}
+.profil .Close{
+  position: absolute;
+  text-align: end;
+  right: 0;
+  font-size: 28px;
+}
+.profil span{
+  text-align: center;
+  font-weight: 600;
+  display: block;
+}
+.profile-imgAccount{
+  text-align: center;
+  display: block;
+}
+.profile-imgAccount img{
+  width: 120px;
+  height: 120px;
+  border-radius: 100%;
+  margin: 10px;
+}
+.h1-heading{
+  text-align: center;
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+}
+.example-headers-align .mat-mdc-form-field + .mat-mdc-form-field {
+  margin-left: 8px;
+}
+mat-accordion{
+  background-color: rgb(37, 37, 37) ;
+  color: white;
+}
+.logOutButton button{
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+.logOutButton button:hover{
+  transform: scale(1.1);
+}

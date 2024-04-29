@@ -31,8 +31,8 @@ export class ValutazioniComponent implements OnInit {
       });
     });
   }
-   getNome(nome: string){
-    return nome;
+   getNome(){
+    return this.authService.user.nome;
   }
       // this.authService.getRecensioniByNegozio('Mediaworld').subscribe(recensioni => {
     //   this.recensioniMediaworld = recensioni;

@@ -14,10 +14,10 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class ValutazioniStreamingComponent {
 
-  negozi: string[] = ['Youtube', 'Twitch', 'Altadefinizione'];
+  negozi: string[] = ['Youtube', 'Twitch', 'Netflix'];
   recensioniPerNegozi: { [key: string]: Recensione[] } = {};
   userNome: string;
-        constructor(private authService: AuthService){}
+        constructor(public authService: AuthService){}
   ngOnInit(): void {
     this.negozi.forEach(negozio => {
       this.authService.getRecensioniByNegozio(negozio).subscribe(recensioni => {
@@ -25,7 +25,5 @@ export class ValutazioniStreamingComponent {
       });
     });
   }
-  getNome(){
-    return this.authService.user.nome;
-  }
+  
 }

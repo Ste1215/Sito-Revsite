@@ -61,8 +61,13 @@ export class RecensioniStreamingComponent implements OnInit {
   inviaRecensione() {
     this.recensioneInviata.emit(this.nuovaRecensione);
     if (this.nuovaRecensione.trim() !== '') {
-      this.authService.aggiungiRecensione({ testo: this.nuovaRecensione, negozio: this.negozioCorrente  });
+      const negozio=this.negozioCorrente;
+      if (this.recensioni.filter(recensione => recensione.negozio === negozio).length < 10) {
+              this.authService.aggiungiRecensione({ testo: this.nuovaRecensione, negozio: this.negozioCorrente  });
       this.nuovaRecensione = '';
+      }else{
+        alert('sei arrivato ad un massimo di 10 recensioni, sblocca il piano pro per avere recensioni illimitate');
+      }
     }
     this.mostraMessaggio=true;
     this.mostraMessaggioValutazioni=true;

@@ -1,29 +1,44 @@
-<div [ngClass]="themeService.themeSignal()">
-<mat-toolbar>
+<div style="background-color: #262626;">
+  <div>
+  <mat-toolbar>
     <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
     <div class="logo"> 
-      <img src="/assets/img/RevSite-background.png" alt="Logo"><span style="cursor: pointer;" (click)="onHome()">evSite</span>
+      <img src="/assets/img/RevSite-background.png" alt="Logo" ><span style="cursor: pointer;" (click)="onHome()">evSite</span>
     </div>
     <span class="example-spacer"></span>
     <div class="button-Sign" *ngIf="!this.authService.isAuthenticated()">
     <button mat-stroked-button class="signInButton" (click)="InLogin()">Sign in</button>
     <button mat-stroked-button (click)="inRegister()">Sign Up</button> 
   </div>
-  <button mat-stroked-button (click)="inLogout()" *ngIf="this.authService.isAuthenticated()">Logout</button>
+  <button class="Btn" (click)="inLogout()" *ngIf="this.authService.isAuthenticated()">
+    <div class="sign">
+      <svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg>
+    </div>
+    <div class="text">Logout</div>
+    </button>
 </mat-toolbar>
 </div>
   <mat-drawer-container autosize>
     <mat-drawer #drawer opened="false" mode="over" position="start" >
       <mat-nav-list>
         <mat-list-item>
-          <button class="button" (click)="inRegister()">
+            <button mat-raised-button style="border-radius: 5px;" (click)="OnRecensioni()" *ngIf="this.authService.isAuthenticated()">Inizia a recensire aziende!</button>
+        </mat-list-item>
+        <mat-list-item>
+          <button (click)="onCategorie()" mat-raised-button style="border-radius: 5px;"   *ngIf="this.authService.isAuthenticated() || this.authService.isUserSignedInWithGoogle()">
+            Vai alle Categorie
+          </button>
+        </mat-list-item>
+        <mat-list-item>
+          <button class="button" (click)="inRegister()" *ngIf="!this.authService.isAuthenticated()">
             <mat-icon>account_circle</mat-icon>
-            Crea il tuo Account!</button> 
-          </mat-list-item>
+            Crea il tuo Account!
+          </button> 
+        </mat-list-item>
           <mat-list-item>
-            <button class="button" (click)="loginWithGitHub()">
+            <button class="button" (click)="loginWithGitHub()" *ngIf="!this.authService.isAuthenticated()">
               <svg fill="#212121" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28">
                 <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
                 <g
@@ -37,11 +52,17 @@
                   <path d="M12,2A10,10,0,0,0,8.84,21.5c.5.08.66-.23.66-.5V19.31C6.73,19.91,6.14,18,6.14,18A2.69,2.69,0,0,0,5,16.5c-.91-.62.07-.6.07-.6a2.1,2.1,0,0,1,1.53,1,2.15,2.15,0,0,0,2.91.83,2.16,2.16,0,0,1,.63-1.34C8,16.17,5.62,15.31,5.62,11.5a3.87,3.87,0,0,1,1-2.71,3.58,3.58,0,0,1,.1-2.64s.84-.27,2.75,1a9.63,9.63,0,0,1,5,0c1.91-1.29,2.75-1,2.75-1a3.58,3.58,0,0,1,.1,2.64,3.87,3.87,0,0,1,1,2.71c0,3.82-2.34,4.66-4.57,4.91a2.39,2.39,0,0,1,.69,1.85V21c0,.27.16.59.67.5A10,10,0,0,0,12,2Z"></path>
                 </g>
               </svg>
-              Continue with Github
+              Continua con Github
             </button>
-        </mat-list-item>
+        </mat-list-item> 
       </mat-nav-list>
-           <button class="button2" (click)="inRegister()">
+           <button class="button2" (click)="onCategorie()" *ngIf="this.authService.isAuthenticated()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
+            <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
+          </svg>
+          Unlock Pro
+        </button> 
+           <button class="button2" (click)="inRegister()" *ngIf="!this.authService.isAuthenticated()">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
             <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
           </svg>
@@ -55,9 +76,49 @@
       <br>
       <h1>Scrivi recensioni.</h1>
       </div>
-      <footer [ngClass]="themeService.themeSignal()">
+
+
+      <div class="innovative-section">
+        <h2 style="color: white; top: 30px;">Esplora le nostre recensioni</h2>
+        <div class="image-grid">
+          <div class="image-item hidden slide-in-left">
+            <img src="../../../assets/img/domande_interattive.jpg" alt="Immagine 1">
+            <p>Descrizione Immagine 1</p>
+          </div>
+          <div class="image-item hidden slide-in-left">
+            <img src="../../../assets/img/domande_interattive.jpg" alt="Immagine 2">
+            <p>Descrizione Immagine 2</p>
+          </div>
+          <div class="image-item hidden slide-in-left">
+            <img src="../../../assets/img/domande_interattive.jpg" alt="Immagine 3">
+            <p>Descrizione Immagine 3</p>
+          </div>
+        </div>
+      </div>
+
+      <!--chi siamo-->
+      <div class="Chisiamo-section">
+        <h2 class="tit hide slide-in-left">Chi siamo</h2>
+        <div class="image-grid2">
+          <div class="img hidden slide-in-left">
+            <img src="../../../assets/img/domande_interattive.jpg" alt="Immagine">
+          </div>
+        </div>
+        <div class="details hidden slide-in-left">
+          <p>
+            Benvenuti su RevSite, il luogo dove l'autenticità incontra l'esperienza. Siamo una piattaforma dedicata alla recensione di aziende di prim'ordine in ogni categoria.
+            Dal settore tecnologico alla ristorazione, passando per il mondo dell'intrattenimento e molto altro ancora, ci impegniamo a fornire recensioni oneste e dettagliate per aiutarti a prendere decisioni informate.
+            Il nostro team di esperti esamina attentamente ogni azienda prima di presentarla sulla nostra piattaforma. Siamo qui per garantire che tu abbia accesso alle migliori recensioni e valutazioni, 
+            sia che tu stia cercando un nuovo ristorante da provare, un servizio di consegna a domicilio affidabile o un'azienda leader nel settore tecnologico.
+            Indipendentemente dalla categoria che ti interessa, puoi contare su di noi per fornirti informazioni accurate e aggiornate. 
+            La tua soddisfazione e fiducia sono la nostra priorità assoluta.
+            Unisciti a noi nel viaggio verso la scoperta delle migliori aziende e servizi, e scopri il potere di una recensione autentica su RevSite.
+          </p>
+        </div>
+      </div>
+      <footer class="footer hide slide-in">
           <app-footer></app-footer>
       </footer> 
     </mat-drawer-content>
   </mat-drawer-container>
-
+</div>

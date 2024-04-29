@@ -32,11 +32,11 @@ p {
 
 a {
     text-decoration: none;
-    color: #ff6347;
+    color: #007bff;
 }
 
 a:hover {
     text-decoration: underline;
-    color: #ff4500;
+    color: #00479e;
 }
 
