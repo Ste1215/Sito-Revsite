@@ -40,7 +40,7 @@ export class RecensioniStreamingComponent implements OnInit {
     this.authService.getRecensioniByNegozio('Twitch').subscribe(recensioni => {
       this.recensioni = recensioni;
     });
-    this.authService.getRecensioniByNegozio('Altadefinizione').subscribe(recensioni => {
+    this.authService.getRecensioniByNegozio('Netflix').subscribe(recensioni => {
       this.recensioni = recensioni;
     });
   }
