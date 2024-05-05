@@ -14,7 +14,8 @@ import {  ReactiveFormsModule } from '@angular/forms';
 import { ArticleInterface } from '../../modelli/cercaArticoli.models';
 import { ServiziService } from '../../servizi/servizi.service';
 import { CarouselComponent } from "../carousel/carousel.component";
-
+import {MatButtonModule} from '@angular/material/button';
+import {MatDividerModule} from '@angular/material/divider';
 const enterTransition = transition(':enter',[
   style({
     opacity: 0,
@@ -36,6 +37,8 @@ const fadeOut =trigger('fadeOut',[exitTransition]);
     styleUrl: './categorie.component.css',
     animations: [fadeIn, fadeOut],
     imports: [
+      MatDividerModule,
+       MatButtonModule,
         MatTabsModule,
         FormsModule,
         RouterModule,

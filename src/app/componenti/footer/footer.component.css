@@ -22,15 +22,7 @@ footer {
     justify-content: center;
   }
   
-  #wrapper{
 
-    margin: 0;
-    padding: 0;
-    display: flex;
-    margin-left: 0;
-    left: 0;
-    transition: all 0.5s ease;
-  }
   
   .contact-section {
     color: white;
@@ -58,21 +50,6 @@ footer {
   .img-fluidapp-img {
     background-color: #fff;
   }
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   .card {
     max-width: 350px;
     background-color: rgb(7 16 45);
@@ -125,7 +102,7 @@ footer {
     padding: 6px;
     text-decoration: none;
   }
-  
+
   .button:first-child {
     box-shadow: 0 4px 6px -1px #488aec31, 0 2px 4px -1px #488aec17;
     background-color: #488aec;
@@ -160,45 +137,8 @@ footer {
     font-size: 12px;
     font-weight: 600;
   }
-  
-  .google span:first-child {
-    color: rgb(219 206 253);
-  }
-  
-  .apple span:first-child {
-    color: rgb(81 87 108);
-  }
-  
-  .google span:last-child {
-    color: #fff;
-    font-weight: 800;
-  }
-  
-  .apple span:last-child {
-    color: #000;
-    font-weight: 800;
-  }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
   .social-icons{
     padding: 0;
     list-style: none;
@@ -207,13 +147,6 @@ footer {
   #wrapper span{
     cursor: pointer;
   }
-  .social-icons li{
-    display: inline-block;
-    margin: 0.10em;
-    position: relative;
-    font-size: 1.2em;
-  }
-  
 .icon2{
     display: inline-block;
 }
@@ -293,3 +226,54 @@ footer {
      margin-top: 20px;
   }
   }
+#wrapper{
+    display: flex;
+    height: 70px;
+    width: 300px;
+}
+#wrapper svg {
+    position: absolute;
+    display: flex;
+    width: 60%;
+    height: 100%;
+    font-size: 24px;
+    font-weight: 700;
+    opacity: 1;
+    transition: opacity 0.25s;
+    z-index: 2;
+    padding: 0.15rem;
+    cursor: pointer;
+}
+#wrapper .social-link1,#wrapper .social-link2,#wrapper .social-link3,#wrapper .social-link4,#wrapper .social-link5 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    color: whitesmoke;
+    font-size: 24px;
+    text-decoration: none;
+    transition: 0.25s;
+    border-radius: 40px;
+}
+#wrapper .social-link1:hover {
+  background: #f09433;
+  background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+  background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+}
+#wrapper .social-link2:hover {
+  background-color: #242c34;
+}
+
+#wrapper .social-link3:hover {
+  background-color: #5865f2;
+}
+
+#wrapper  .social-link4:hover {
+  background-color: #0a66c2;
+}
+
+#wrapper .social-link5:hover {
+  background-color: #ff8000;
+}

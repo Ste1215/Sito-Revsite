@@ -104,4 +104,21 @@ h1 {
   margin: 10px 0;
 }
 
-  
+.business{
+  background: #cfcfcf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row; 
+}
+.business h3{
+  font-weight: 700;
+  line-height: 120%;
+  font-size: 18px;
+  letter-spacing: -0.198px;
+  margin-right: 10px;
+  margin-bottom: 0;
+}
+.business button {
+  margin-left: 10px; 
+}

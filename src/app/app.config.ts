@@ -5,9 +5,9 @@ import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient, withFetch } from '@angular/common/http';
- import { initializeApp } from "firebase/app";
- import firebase from 'firebase/compat';
-
+import { initializeApp } from "firebase/app";
+import firebase from 'firebase/compat';
+import { provideLottieOptions } from 'ngx-lottie';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
@@ -16,6 +16,9 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch()),
     FormsModule,
     provideAnimations(),
+    provideLottieOptions({
+      player: () => import('lottie-web'),
+    }),
   ],
 };
 const firebaseConfig = {

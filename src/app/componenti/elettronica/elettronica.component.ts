@@ -9,6 +9,7 @@ import { RecensioniComponent } from "../recensioni/recensioni.component";
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 
 @Component({
     selector: 'app-elettronica',
@@ -16,6 +17,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     templateUrl: './elettronica.component.html',
     styleUrl: './elettronica.component.css',
     imports: [
+      MatDialogModule,
       MatFormFieldModule,
       MatInputModule,
       MatTableModule,
@@ -26,7 +28,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
         RecensioniComponent,
     ]
 })
-export class ElettronicaComponent implements OnInit{ 
+export class ElettronicaComponent implements OnInit{
+
   negozi =[
     {nome: "Mediaworld", numeroRecensioni: 0},
     {nome: "Euronics", numeroRecensioni: 0},
@@ -44,7 +47,7 @@ export class ElettronicaComponent implements OnInit{
 @Input() identificatore: string;
 
   
-  constructor(private route: ActivatedRoute,private router: Router,public authService: AuthService){}
+  constructor(public dialog: MatDialog,private route: ActivatedRoute,private router: Router,public authService: AuthService){}
   ngOnInit(): void {
     this.isElettronicaPage = this.router.url.includes('/elettronica');
   if(this.isElettronicaPage ){
@@ -101,7 +104,6 @@ gestisciNuovaRecensioneInviata(nuovaRecensione: string, negozio: string) {
       };
       this.authService.aggiungiRecensione(recensione);
     }
-
 
   // gestisciNuovaRecensioneInviata(nuovaRecensione: string) {
   //   this.numeroRecensioni++;

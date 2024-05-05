@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { ThemeService } from '../../servizi/theme.service';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -12,5 +11,5 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './footer.component.css'
 })
 export class FooterComponent {
-  themeService: ThemeService = inject(ThemeService);
+ 
 }

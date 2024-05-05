@@ -5,12 +5,22 @@
       <mat-icon>menu</mat-icon>
     </button>
     <div class="logo"> 
-      <img src="/assets/img/RevSite-background.png" alt="Logo" ><span style="cursor: pointer;" (click)="onHome()">evSite</span>
+      <img src="/assets/img/RevSite-background.png" alt="Logo"><span style="cursor: pointer;" (click)="onHome()">evSite</span>
     </div>
     <span class="example-spacer"></span>
     <div class="button-Sign" *ngIf="!this.authService.isAuthenticated()">
-    <button mat-stroked-button class="signInButton" (click)="InLogin()">Sign in</button>
-    <button mat-stroked-button (click)="inRegister()">Sign Up</button> 
+      <button class="signInButton" (click)="InLogin()">
+        Sign in
+        <div class="arrow-wrapper">
+            <div class="arrow"></div>
+        </div>
+    </button>
+      <button class="signInButton" (click)="inRegister()">
+        Sign Up
+        <div class="arrow-wrapper">
+            <div class="arrow"></div>
+        </div>
+    </button>
   </div>
   <button class="Btn" (click)="inLogout()" *ngIf="this.authService.isAuthenticated()">
     <div class="sign">
@@ -76,8 +86,6 @@
       <br>
       <h1>Scrivi recensioni.</h1>
       </div>
-
-
       <div class="innovative-section">
         <h2 style="color: white; top: 30px;">Esplora le nostre recensioni</h2>
         <div class="image-grid">
@@ -86,8 +94,10 @@
             <p>Descrizione Immagine 1</p>
           </div>
           <div class="image-item hidden slide-in-left">
-            <img src="../../../assets/img/domande_interattive.jpg" alt="Immagine 2">
-            <p>Descrizione Immagine 2</p>
+            <img src="../../../assets/img/azienda.jpg" alt="Immagine 2">
+            <p>L'immagine rappresenta l'azienda nata da un sito web di recensioni,
+               con uno stile dinamico e inclusivo che trasmette fiducia e apertura verso un mondo di esperienze condivise.
+            </p>
           </div>
           <div class="image-item hidden slide-in-left">
             <img src="../../../assets/img/domande_interattive.jpg" alt="Immagine 3">
@@ -95,13 +105,12 @@
           </div>
         </div>
       </div>
-
       <!--chi siamo-->
       <div class="Chisiamo-section">
         <h2 class="tit hide slide-in-left">Chi siamo</h2>
         <div class="image-grid2">
           <div class="img hidden slide-in-left">
-            <img src="../../../assets/img/domande_interattive.jpg" alt="Immagine">
+            <img src="../../../assets/img/azienda.jpg" alt="Immagine">
           </div>
         </div>
         <div class="details hidden slide-in-left">
@@ -116,8 +125,8 @@
           </p>
         </div>
       </div>
-      <footer class="footer hide slide-in">
-          <app-footer></app-footer>
+      <footer class="footer">
+          <app-footer class="ok hide slide-in"></app-footer>
       </footer> 
     </mat-drawer-content>
   </mat-drawer-container>

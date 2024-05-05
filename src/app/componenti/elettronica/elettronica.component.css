@@ -1,20 +1,45 @@
-
 .example-card {
-    max-width: 400px;
-  }
-.card-recensioni{
+  max-width: 400px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.example-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+.container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: center; 
+  justify-content: center; 
+  padding: 20px;
+}
+
+
+.sidebar {
+  width: 25%;
+  margin-right: 20px; 
+}
+
+.sidebar img {
+  max-width: 100%; 
+}
+.card-recensioni {
+  display: flex;
   flex-direction: column;
-  height: 100vh; 
+  align-items: center;
+  padding: 20px;
+  flex-grow: 1;
 }
-.card-recensioni > *{
-    margin: 5px;
+.card-recensioni > * {
+  margin: 10px 0;
 }
-div{
+div {
   display: flex;
-align-items: center;
+  align-items: center;
 }
 .StreamingContainer{
   display: flex;
