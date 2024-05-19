@@ -21,7 +21,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import { CommonModule } from '@angular/common'; 
 import { Router } from '@angular/router';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { RecensioniSService } from '../../servizi/recensioni-s.service';
+
 @Component({
   selector: 'app-recensioni',
   standalone: true,
@@ -50,7 +51,7 @@ export class RecensioniComponent implements OnInit{
   @Output() recensioneInviata = new EventEmitter<string>();
   recensioni: {testo: string; negozio: string;}[] = [];
   ngOnInit(): void {}
-  constructor(private authService: AuthService,private router: Router) {}
+  constructor(private recensioniService: RecensioniSService,private authService: AuthService,private router: Router) {}
   mostraRecensione: boolean = false;
   mostraBottone: boolean = true;
   nuovaRecensione: string = '';
@@ -69,14 +70,11 @@ export class RecensioniComponent implements OnInit{
     // reset del textArea (dove inserisco la recensione)
     if (this.nuovaRecensione.trim() !== '') {
       const negozio = this.negozioCorrente;
-      if (this.recensioni.filter(recensione => recensione.negozio === negozio).length < 10) {
     const nuovaRecensione ={ testo: this.nuovaRecensione, negozio: this.negozioCorrente};
       this.authService.aggiungiRecensione(nuovaRecensione);
       this.recensioni.push(nuovaRecensione);
       this.nuovaRecensione = '';
-      }else{
-        alert('sei arrivato ad un massimo di 10 recensioni, sblocca il piano pro per avere recensioni illimitate')
-      }
+      this.recensioniService.updateCompanyNumberRec(this.recensioni.length);
     }
     this.mostraMessaggio=true;
     this.mostraMessaggioValutazioni=true;

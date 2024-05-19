@@ -66,8 +66,6 @@ submitPaymentForm(paymentForm:NgForm) {
      this.paymentForm.resetForm();
   }
 }
-
-
  checkPianoProStatus() {
   const PianoPro = localStorage.getItem('hasPianoPro');
   if (PianoPro) {

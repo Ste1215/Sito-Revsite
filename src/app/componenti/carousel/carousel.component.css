@@ -36,26 +36,24 @@
     .prevButton {
         left: 10px; 
     }
-        #indicators{
-            position: absolute;
-            margin: 0 auto;
-            bottom: 10px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            width: 200px;
-            .indicator{
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                background-color: white;
-                display: inline-block;
-                margin: 0px 5px;
-                cursor: pointer;
-                transition: background-color 0.5 ease-in-out;
-                &.active{
-                    background-color: #000;
-                }
+    #indicators{
+        position: absolute;
+        margin: 0 auto;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        width: 200px;
+        .indicator{
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: white;
+            display: inline-block;
+            margin: 0px 5px;
+            cursor: pointer;
+            transition: background-color 0.5 ease-in-out;
+                &.active{background-color: #000;}
             }
         }
     }

@@ -10,7 +10,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { AuthService } from '../../auth/auth.service'; 
 import { CommonModule } from '@angular/common';
-import {MatMenuModule, MatMenuTrigger} from '@angular/material/menu';
+import {MatMenuModule} from '@angular/material/menu';
 import {
   MatDialog,
   MatDialogActions,
@@ -18,8 +18,6 @@ import {
   MatDialogContent,
   MatDialogTitle,
 } from '@angular/material/dialog';
-import { SettingsUserComponents } from './settings-user.component';
-import { ArticleInterface } from '../../modelli/cercaArticoli.models';
 import { ServiziService } from '../../servizi/servizi.service';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDatepickerModule} from '@angular/material/datepicker';

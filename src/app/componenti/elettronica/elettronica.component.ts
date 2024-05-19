@@ -34,12 +34,12 @@ export class ElettronicaComponent implements OnInit{
     {nome: "Mediaworld", numeroRecensioni: 0},
     {nome: "Euronics", numeroRecensioni: 0},
     {nome: "Unieuro", numeroRecensioni: 0},
-  ]
+  ];
   aziende=[
     {nome: "Youtube", numeroRecensioni: 0},
     {nome: "Twitch", numeroRecensioni: 0},
     {nome: "Netflix", numeroRecensioni: 0},
-  ]  
+  ];
   numeroRecensioni: number = 0;
   recensioneInseritaDallUtente: string;
   isElettronicaPage: boolean;
@@ -72,7 +72,6 @@ export class ElettronicaComponent implements OnInit{
       }
     });
     }
-
     //Streaming componente logica aziende(non negozio)
     this.route.paramMap.subscribe(params => {
       this.categoria = params.get('categoria');

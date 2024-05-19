@@ -8,7 +8,6 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { AuthService } from './auth/auth.service';
 import { FooterComponent } from "./componenti/footer/footer.component";
 import { CategorieComponent } from "./componenti/categorie/categorie.component";
-import { ThemeService } from './servizi/theme.service';
 
 @Component({
     selector: 'app-root',
@@ -30,10 +29,6 @@ import { ThemeService } from './servizi/theme.service';
 export class AppComponent implements OnInit{
   title = 'REVSITE';
  constructor(private authService: AuthService){}
- changeTheme(theme:string){
-    const body=document.body as HTMLElement
-    body.setAttribute('data-bs-theme',theme)
-  }
   ngOnInit(): void {
     if(localStorage.getItem('user')){
       const user = JSON.parse(localStorage.getItem('user'))
@@ -43,5 +38,4 @@ export class AppComponent implements OnInit{
  onLogout(){
   this.authService.logout();
  }
-// "@angular/material/prebuilt-themes/indigo-pink.css",
 }

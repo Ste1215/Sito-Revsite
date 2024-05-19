@@ -34,13 +34,6 @@ export class ValutazioniComponent implements OnInit {
    getNome(){
     return this.authService.user.nome;
   }
-      // this.authService.getRecensioniByNegozio('Mediaworld').subscribe(recensioni => {
-    //   this.recensioniMediaworld = recensioni;
-    // });
-  
-    // this.authService.getRecensioniByNegozio('Euronics').subscribe(recensioni => {
-    //   this.recensioniEuronics = recensioni;
-    // });
  
   
 

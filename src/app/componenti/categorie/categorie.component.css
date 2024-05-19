@@ -4,41 +4,30 @@
   box-sizing: border-box;
   font-family: "Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji""Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji" !important;
 }
-.container-img {
-  background: url('../../../assets/img/background-categorie.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
+.container-img {  display: flex;  height: 100vh;}
+.content {
+  flex: 1;
+  background-color: #ffffff;
+  padding: 20px;
+  box-sizing: border-box;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #3498db;
+  justify-content: center; 
+  align-items: center; 
+  text-align: center; 
 }
-
-.container-img h1 {
-  font-size: 3em;
-  color: #000000;
-  text-align: center;
-  padding: 2em;
+.content h1{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3em; 
+  font-weight: bold; 
+  color: #333333; 
+  text-transform: uppercase; 
+  text-align: center; 
+  letter-spacing: 2px; 
+  margin-bottom: 20px; 
 }
-
-h1 {
-  font-size: 1.5em;
-  color: #333;
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-.categorie {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-
+.image {  flex: 1;  border-radius: 20px;  background-color: #2476adc1;   background-image: url('../../../assets/img/landingImage.png');   background-size: cover;  background-position: center;}
+h1 {  font-size: 1.5em;  color: #333;  text-align: center;  margin-bottom: 15px;}
+.categorie {  display: flex;  justify-content: space-around;  align-items: center;  flex-wrap: wrap;  margin-top: 20px;  border-radius: 15px;}
 .btn-categorie {
   background-color: #2980b9;
   color: white;
@@ -46,79 +35,20 @@ h1 {
   font-size: 1.2em;
   padding: 15px 30px;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
   text-align: center;
   transition: background-color 0.3s ease;
   flex: 1;
   margin: 10px; 
+  border-radius: 10px;
 }
-
-.btn-categorie mat-icon {
-  margin-right: 10px;
-}
-
-.btn-categorie:hover {
-  background-color: #2574a9; 
-}
-
-@media (max-width: 768px) {
-  .container-img h1 {
-    font-size: 1.8em; 
-  }
-
-  .btn-categorie {
-    flex-basis: 100%; 
-  }
-}
-
-.container {
-  margin: 0 auto;
-  width: 500px;
-  margin-top: 50px;
-}
-
-.searchBar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.searchBarClear {
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-.searchBarInput {
-  height: 30px;
-  width: 300px;
-  font-size: 16px;
-}
-
-.articlesTable {
-  margin-top: 80px;
-  text-align: center;
-}
-
-.article {
-  margin: 10px 0;
-}
-
-.business{
-  background: #cfcfcf;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row; 
-}
-.business h3{
-  font-weight: 700;
-  line-height: 120%;
-  font-size: 18px;
-  letter-spacing: -0.198px;
-  margin-right: 10px;
-  margin-bottom: 0;
-}
-.business button {
-  margin-left: 10px; 
-}
+.btn-categorie mat-icon {margin-right: 10px;}
+.btn-categorie:hover {background-color: #2574a9; }
+@media (max-width: 768px) {.container-img h1 { font-size: 1.8em; }.btn-categorie {flex-basis: 100%; }}
+.container {margin: 0 auto;width: 500px;margin-top: 50px;}
+.searchBar{display:flex;align-items:center;justify-content:center}
+.searchBarClear{margin-left:10px;cursor:pointer}
+.searchBarInput{height:30px;width:300px;font-size:16px}.articlesTable{margin-top:80px;text-align:center}.article{margin:10px 0}
+.business{background-color:#f3f3f3;border-radius:16px;padding:20px;display:flex;justify-content:center;align-items:center}.business h3{margin:0 5px;color:#333;font-size:1.5rem}
+.business button{background-color:#3498db;color:white;font-size:1rem;padding:10px 20px;border:none;border-radius:5px;cursor:pointer;transition:background-color 0.3s ease}
+.business button:hover{background-color:#297fb8}

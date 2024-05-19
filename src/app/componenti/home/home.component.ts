@@ -10,10 +10,10 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { FooterComponent } from "../footer/footer.component";
 import firebase from "firebase/compat/app";
-import { CommonModule } from "@angular/common";
-import { ThemeService } from '../../servizi/theme.service';
+import { CommonModule, IMAGE_CONFIG } from "@angular/common";
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AnimationBuilder, AnimationFactory, AnimationMetadata, animate, style } from '@angular/animations';
+import { ServiziService } from '../../servizi/servizi.service';
 @Component({
     selector: 'app-home',
     standalone: true,
@@ -32,21 +32,21 @@ import { AnimationBuilder, AnimationFactory, AnimationMetadata, animate, style }
         CommonModule,
         MatButtonModule, 
         MatIconModule,
-
-    ]
+    ],
+    providers: [
+      {
+        provide: IMAGE_CONFIG,
+        useValue: {
+          disableImageSizeWarning: true, 
+          disableImageLazyLoadWarning: true
+        }
+      },
+    ],
 })
 export class HomeComponent implements OnInit {
   private animatedElements: HTMLElement[] = [];
-  constructor(private animationBuilder: AnimationBuilder, private elementRef: ElementRef,public authService: AuthService, private router: Router) {}
+  constructor(private servizi: ServiziService,private animationBuilder: AnimationBuilder, private elementRef: ElementRef,public authService: AuthService, private router: Router) {}
   ngOnInit(): void {}
-  loginWithGitHub(){
-    const provider = new firebase.auth.GithubAuthProvider();
-    firebase.auth().signInWithPopup(provider)
-      .then(() => {
-        this.router.navigate(['/dashboard/categorie']);
-      })
-  }
-  
   @HostListener('window:scroll', ['$event'])
   checkIfElementIsVisible() {
     const hiddenElements = this.elementRef.nativeElement.querySelectorAll('.hidden, .hide');
@@ -88,10 +88,9 @@ export class HomeComponent implements OnInit {
       }
     }, delay);
   }
-  
-
-
-
+  scrollToElement(): void {
+    this.servizi.scrollToElement('destinazion');
+  }
 
   InLogin(){
     this.authService.pathLogin();

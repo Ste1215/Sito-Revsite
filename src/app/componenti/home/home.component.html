@@ -8,19 +8,37 @@
       <img src="/assets/img/RevSite-background.png" alt="Logo"><span style="cursor: pointer;" (click)="onHome()">evSite</span>
     </div>
     <span class="example-spacer"></span>
-    <div class="button-Sign" *ngIf="!this.authService.isAuthenticated()">
-      <button class="signInButton" (click)="InLogin()">
-        Sign in
-        <div class="arrow-wrapper">
-            <div class="arrow"></div>
-        </div>
-    </button>
-      <button class="signInButton" (click)="inRegister()">
-        Sign Up
-        <div class="arrow-wrapper">
-            <div class="arrow"></div>
-        </div>
-    </button>
+    <div class="button-Sign" *ngIf="!this.authService.isAuthenticated()">   
+        <button class="signInButton" (click)="InLogin()"> 
+          <svg
+            height="24"
+            width="24"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path
+              d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+              fill="currentColor"
+            ></path>
+          </svg>
+          <span>Sign in</span>
+        </button>
+        <button class="signInButton" (click)="inRegister()">
+          <svg
+            height="24"
+            width="24"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path
+              d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+              fill="currentColor"
+            ></path>
+          </svg>
+          <span>Sign Up</span>
+        </button>
   </div>
   <button class="Btn" (click)="inLogout()" *ngIf="this.authService.isAuthenticated()">
     <div class="sign">
@@ -31,10 +49,12 @@
 </mat-toolbar>
 </div>
   <mat-drawer-container autosize>
-    <mat-drawer #drawer opened="false" mode="over" position="start" >
+    <mat-drawer #drawer opened="false" mode="over" position="start">
       <mat-nav-list>
         <mat-list-item>
-            <button mat-raised-button style="border-radius: 5px;" (click)="OnRecensioni()" *ngIf="this.authService.isAuthenticated()">Inizia a recensire aziende!</button>
+            <button mat-raised-button style="border-radius: 5px;" (click)="OnRecensioni()" *ngIf="this.authService.isAuthenticated()">
+              Inizia a recensire aziende!
+            </button>
         </mat-list-item>
         <mat-list-item>
           <button (click)="onCategorie()" mat-raised-button style="border-radius: 5px;"   *ngIf="this.authService.isAuthenticated() || this.authService.isUserSignedInWithGoogle()">
@@ -42,42 +62,11 @@
           </button>
         </mat-list-item>
         <mat-list-item>
-          <button class="button" (click)="inRegister()" *ngIf="!this.authService.isAuthenticated()">
-            <mat-icon>account_circle</mat-icon>
-            Crea il tuo Account!
-          </button> 
+          <button *ngIf="!this.authService.isAuthenticated()" (click)="scrollToElement()">
+            Scopri chi siamo
+          </button>
         </mat-list-item>
-          <mat-list-item>
-            <button class="button" (click)="loginWithGitHub()" *ngIf="!this.authService.isAuthenticated()">
-              <svg fill="#212121" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28">
-                <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
-                <g
-                  stroke-linejoin="round"
-                  stroke-linecap="round"
-                  id="SVGRepo_tracerCarrier"
-                ></g>
-                <g id="SVGRepo_iconCarrier">
-                  <title>github</title>
-                  <rect fill="none" height="24" width="24"></rect>
-                  <path d="M12,2A10,10,0,0,0,8.84,21.5c.5.08.66-.23.66-.5V19.31C6.73,19.91,6.14,18,6.14,18A2.69,2.69,0,0,0,5,16.5c-.91-.62.07-.6.07-.6a2.1,2.1,0,0,1,1.53,1,2.15,2.15,0,0,0,2.91.83,2.16,2.16,0,0,1,.63-1.34C8,16.17,5.62,15.31,5.62,11.5a3.87,3.87,0,0,1,1-2.71,3.58,3.58,0,0,1,.1-2.64s.84-.27,2.75,1a9.63,9.63,0,0,1,5,0c1.91-1.29,2.75-1,2.75-1a3.58,3.58,0,0,1,.1,2.64,3.87,3.87,0,0,1,1,2.71c0,3.82-2.34,4.66-4.57,4.91a2.39,2.39,0,0,1,.69,1.85V21c0,.27.16.59.67.5A10,10,0,0,0,12,2Z"></path>
-                </g>
-              </svg>
-              Continua con Github
-            </button>
-        </mat-list-item> 
       </mat-nav-list>
-           <button class="button2" (click)="onCategorie()" *ngIf="this.authService.isAuthenticated()">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
-            <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
-          </svg>
-          Unlock Pro
-        </button> 
-           <button class="button2" (click)="inRegister()" *ngIf="!this.authService.isAuthenticated()">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
-            <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
-          </svg>
-          Unlock Pro
-        </button> 
     </mat-drawer>
     <mat-drawer-content>
       <div class="intro-section" style="text-align: center; min-height: 800px;">
@@ -90,27 +79,25 @@
         <h2 style="color: white; top: 30px;">Esplora le nostre recensioni</h2>
         <div class="image-grid">
           <div class="image-item hidden slide-in-left">
-            <img src="../../../assets/img/domande_interattive.jpg" alt="Immagine 1">
-            <p>Descrizione Immagine 1</p>
+            <img src="../../../assets/img/domande_interattive.jpg" alt="Immagine1">
+            <p>Immagine 1</p>
           </div>
           <div class="image-item hidden slide-in-left">
-            <img src="../../../assets/img/azienda.jpg" alt="Immagine 2">
-            <p>L'immagine rappresenta l'azienda nata da un sito web di recensioni,
-               con uno stile dinamico e inclusivo che trasmette fiducia e apertura verso un mondo di esperienze condivise.
+            <img src="../../../assets/img/azienda.jpg" alt="Immagine2">
+            <p>stile dinamico,inclusivo e porta verso un mondo di esperienze condivise.
             </p>
           </div>
           <div class="image-item hidden slide-in-left">
-            <img src="../../../assets/img/domande_interattive.jpg" alt="Immagine 3">
-            <p>Descrizione Immagine 3</p>
+            <img src="../../../assets/img/domande_interattive.jpg" alt="Immagine3">
+            <p>Immagine 3</p>
           </div>
         </div>
       </div>
-      <!--chi siamo-->
       <div class="Chisiamo-section">
-        <h2 class="tit hide slide-in-left">Chi siamo</h2>
+        <h2 class="tit hide slide-in-left" id="destinazion">Chi siamo</h2>
         <div class="image-grid2">
           <div class="img hidden slide-in-left">
-            <img src="../../../assets/img/azienda.jpg" alt="Immagine">
+            <img src="../../../assets/img/reviewSmartPhone.png" alt="Immagine">
           </div>
         </div>
         <div class="details hidden slide-in-left">

@@ -16,6 +16,7 @@ import { RecensioniStreamingComponent } from './componenti/recensioni-streaming/
 import { ValutazioniStreamingComponent } from './componenti/valutazioni-streaming/valutazioni-streaming.component';
 import { PianoProComponent } from './componenti/piano-pro/piano-pro.component';
 import { BusinessComponent } from './componenti/business/business.component';
+import { AziendaCercataComponent } from './componenti/azienda-cercata/azienda-cercata.component';
 
 
 export const routes: Routes = [
@@ -34,6 +35,7 @@ export const routes: Routes = [
         {path:'streaming/ValutazioniStreaming',component: ValutazioniStreamingComponent},
         {path:'piani/pro',component: PianoProComponent},
         {path:'categorie/business',component:BusinessComponent},
+        {path:'categorie/business/company',component:AziendaCercataComponent},
     ]},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},

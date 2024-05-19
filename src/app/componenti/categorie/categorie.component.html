@@ -1,9 +1,20 @@
-<div class="container-img" @fadeIn @fadeOut>
+<!-- <div class="container-img" @fadeIn @fadeOut>
     <h1 style=" font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     font-weight: 500;
-    color: #ffffff;">Trova aziende affidabili.Scrivi Recensioni.</h1>
+    color: #ffffff;">Trova aziende affidabili.
+    <br>
+    Scrivi Recensioni.</h1>
+</div> -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+<div class="container-img" @fadeIn @fadeOut>
+    <div class="content">
+        <h1>Trova aziende affidabili.<br>Scrivi Recensioni.</h1>
+    </div>
+    <div class="image"></div>
 </div>
+
 <router-outlet></router-outlet>
 
 <div style="
@@ -12,10 +23,11 @@
     align-items: center;
     justify-content: center;
     " @fadeIn @fadeOut>
-  <app-carousel [autoPlay]="true" [slides]="slides"></app-carousel>  
+  <app-carousel [autoPlay]="true" [slides]="slides"></app-carousel>
 </div>
 
-<h1 id="destinazione" @fadeIn @fadeOut>Scopri le categorie</h1>
+<h1 id="destinazione" @fadeIn @fadeOut>Tutte le categorie</h1>
+
  <div class="categorie" @fadeIn  @fadeOut>
         <a class="btn-categorie" routerLink="/dashboard/elettronica" mat-raised-button >
         <mat-icon>computer</mat-icon>
@@ -29,11 +41,11 @@
         <mat-icon>business_center</mat-icon>
         <span>E-commerce</span>
     </a>
-</div> 
-<div class="business">
-    <h3>Hai un'azienda?</h3>
-    <button mat-raised-button routerLink="/dashboard/categorie/business">Inizia ora</button>
 </div>
+    <div class="business">
+        <h3>Hai un'azienda?</h3>
+        <button mat-button routerLink="/dashboard/categorie/business">Inizia ora</button>
+    </div>
 
 
 

@@ -4,7 +4,6 @@
     box-sizing: border-box;
     font-family: "Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji""Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji" !important;
   }
-
 .container {
     max-width: 80%;
     margin: 0 auto;
@@ -13,13 +12,11 @@
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 h1 {
     font-size: 2em;
     color: #3498db;
     margin-bottom: 20px;
 }
-
 button {
     background-color: #3498db;
     color: white;
@@ -30,24 +27,20 @@ button {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
 button:hover {
     background-color: #297fb8;
 }
-
 .newRecensione-componente {
     max-width: 80%;
     margin: 0 auto;
     padding: 20px;
     box-sizing: border-box;
 }
-
 mat-dialog-title {
     font-size: 1.5em;
     color: #3498db;
     margin-bottom: 10px;
 }
-
 mat-chip-listbox {
     display: flex;
     flex-wrap: wrap;
@@ -55,7 +48,6 @@ mat-chip-listbox {
     align-items: center;
     margin-bottom: 20px;
 }
-
 mat-chip-option {
     margin: 5px;
     background-color: #3498db;
@@ -66,11 +58,7 @@ mat-chip-option {
     padding: 8px 15px;
     font-size: 1em;
 }
-
-mat-chip-option:hover {
-    background-color: #297fb8;
-}
-
+mat-chip-option:hover {background-color: #297fb8;}
 textarea {
     width: 100%;
     resize: none;
@@ -79,16 +67,13 @@ textarea {
     border-radius: 5px;
     transition: border-color 0.3s ease;
 }
-
 textarea:focus {
     border-color: #297fb8;
 }
-
 mat-dialog-actions {
     display: flex;
     justify-content: flex-end;
 }
-
 button[mat-button] {
     background-color: #3498db;
     color: white;
@@ -99,22 +84,9 @@ button[mat-button] {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
 button[mat-button]:hover {
     background-color: #297fb8;
 }
-
 @media (max-width: 768px) {
-    textarea {
-        resize: vertical;
-    }
-
-    .container {
-        max-width: 90%;
-    }
-
-    .newRecensione-componente,
-    textarea {
-        max-width: 100%;
-    }
+    textarea {resize: vertical;}.container {max-width: 90%;}.newRecensione-componente,textarea {max-width: 100%;}
 }

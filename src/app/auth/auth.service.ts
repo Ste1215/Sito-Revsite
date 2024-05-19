@@ -4,8 +4,7 @@ import { User } from '../modelli/user.models';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, catchError, map, throwError } from 'rxjs';
 import { ArticleInterface } from '../modelli/cercaArticoli.models';
-
-
+import { environment } from '../../environments/environment.development';
 export interface Recensione {
   testo: string;
   negozio: string;
@@ -16,26 +15,14 @@ export interface Recensione {
 export class AuthService{
   recensioniCount: number = 0;
   recensioni: string[] = [];
-  APIkey='AIzaSyBIFfzsHEY-ECfG-We8Ia57ZdLJ0vuaugk'
+  APIkey=environment.firebaseAPIKey
   signUpURL=`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${this.APIkey}`
   signInURL=`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.APIkey}`
   isLoggedIn: boolean;
   user : User
   credenzialiErrate: boolean=false;
 
-  constructor(private http: HttpClient, private router: Router) {
-    // const recensioniLocalStorage = localStorage.getItem('recensioni');
-    // if (recensioniLocalStorage) {
-    //   const recensioni = JSON.parse(recensioniLocalStorage);
-    //   this.recensioniSubject.next(recensioni);
-    // }
-  }// private apiUrl = 'https://revsite-7732b-default-rtdb.europe-west1.firebasedatabase.app/'; 
-
-  
-
-
-
-
+  constructor(private http: HttpClient, private router: Router) {}
    isUserSignedInWithGoogle(): boolean {
      const user = JSON.parse(localStorage.getItem('user'));
      if (user && user.providerData) {
@@ -62,7 +49,6 @@ export class AuthService{
       })
     );
   }
-
   createUser(nome: string,email: string, id: string, token: string, expirationDate: Date, profileImage: string,profileImageUrl: string){
     this.user = new User(nome || 'default',email,id,token,expirationDate,profileImage,profileImageUrl);
     this.isLoggedIn = true;
@@ -97,31 +83,6 @@ updateProfileImage(imageUrl: string): void {
   pathRegister(){
     this.router.navigate(['/register'])
   }
-
-  //  private recensioniSubject = new BehaviorSubject<Recensione[]>([]);
-  // recensioni$ = this.recensioniSubject.asObservable();
-  // aggiungiRecensione(recensione: Recensione) {
-  //   const recensioniAttuali = this.recensioniSubject.value;
-  //   const nuoveRecensioni = [...recensioniAttuali, recensione];
-  //   this.recensioniSubject.next(nuoveRecensioni);
-  // }
-  // private recensioneSubject = new BehaviorSubject<string>('');
-  // recensione$ = this.recensioneSubject.asObservable();
-  // inviaRecensione(recensione: string) {
-  //   this.recensioneSubject.next(recensione);
-  // }
-  // getRecensioniByNegozio(negozio: string): Observable<Recensione[]> {
-  //   return this.recensioni$.pipe(
-  //     map(recensioni => recensioni.filter(recensione => recensione.negozio === negozio))
-  //   );
-  // }
-
-  // getRecensioni(): Observable<Recensione[]> {
-  //   return this.recensioni$;
-  // }
-  // getNumeroRecensioni(): Observable<number> {
-  //   return this.recensioni$.pipe(map(recensioni => recensioni.length));
-  // }
   private recensioniSubjects: { [negozio: string]: BehaviorSubject<Recensione[]> } = {};
   private recensioniSubject = new BehaviorSubject<Recensione[]>([]);
   recensioni$ = this.recensioniSubject.asObservable();
