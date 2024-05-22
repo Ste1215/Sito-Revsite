@@ -1,14 +1,23 @@
 <div class="container">
-    <h1>Crea la tua Prima recensione!</h1>
+    <h1 style="text-align: center;">Crea la tua Prima recensione!</h1>
     <button mat-raised-button *ngIf="!mostraRecensione"  (click)=" mostraRecensione= true; mostraBottone = false">inizia ora</button>
     <div class="newRecensione-componente" *ngIf="mostraRecensione">
       <a style="color: gray; text-decoration: underline; display: block; text-align: end;" (click)="OnRecensioniElettronica()">Vuoi recensire La categoria Elettronica?</a>
         <h2 mat-dialog-title>Recensioni su {{categoria}}</h2>
-    <mat-chip-listbox aria-label="Fish selection">
-          <mat-chip-option  (click)="selezionaNegozio('Youtube')">Youtube</mat-chip-option>
-          <mat-chip-option (click)="selezionaNegozio('Twitch')">Twitch</mat-chip-option>
-          <mat-chip-option (click)="selezionaNegozio('Netflix')">Netflix</mat-chip-option>
-    </mat-chip-listbox>
+    <mat-chip-listbox aria-label="Shop selection">
+          <mat-chip-option (click)="selezionaNegozio('Youtube')">
+            <img matChipAvatar src="../../../assets/img/yt-logo.png" alt=""/>
+            Youtube
+          </mat-chip-option>
+          <mat-chip-option (click)="selezionaNegozio('Twitch')">
+            <img matChipAvatar src="../../../assets/img/twitch-logo.png" alt=""/>
+            Twitch
+          </mat-chip-option> 
+          <mat-chip-option (click)="selezionaNegozio('Netflix')">
+            <img matChipAvatar src="../../../assets/img/netflix-logo.png" alt=""/>
+            Netflix
+          </mat-chip-option>
+        </mat-chip-listbox>
       <mat-dialog-content>
           <textarea [(ngModel)]="nuovaRecensione" placeholder="Inserisci la tua recensione"></textarea> 
       </mat-dialog-content>

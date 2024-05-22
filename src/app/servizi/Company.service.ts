@@ -11,11 +11,10 @@ export class AgencyBusinessService {
 
   checkCompany(name: string): boolean {
     const companies = this.getCompanies();
-    return companies.some(company => company.nome === name);
+    return companies.some(company => company.nome.toLowerCase() === name.toLowerCase());
   }
   private getCompanies():{nome: string, numeroRecensioni: number }[]{
     return [
-      
       {nome: "Mediaworld", numeroRecensioni: 0},
       {nome: "Euronics", numeroRecensioni: 0},
       {nome: "Unieuro", numeroRecensioni: 0},

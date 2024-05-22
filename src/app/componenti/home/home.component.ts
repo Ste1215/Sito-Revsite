@@ -88,10 +88,6 @@ export class HomeComponent implements OnInit {
       }
     }, delay);
   }
-  scrollToElement(): void {
-    this.servizi.scrollToElement('destinazion');
-  }
-
   InLogin(){
     this.authService.pathLogin();
   }

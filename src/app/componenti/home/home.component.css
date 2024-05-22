@@ -81,60 +81,16 @@ mat-grid-list { background: rgb(0, 0, 0);    color: white;  }
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
   background-color: var(--night-rider);
 }
-.sign {
-  width: 100%;
-  transition-duration: .3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.sign svg {
-  width: 17px;
-}
-.sign svg path {
-  fill: var(--af-white);
-}
-.text {
-  position: absolute;
-  right: 0%;
-  width: 0%;
-  opacity: 0;
-  color: var(--af-white);
-  font-size: 1em;
-  font-weight: 400;
-  transition-duration: .3s;
-}
-.Btn:hover {
-  width: 125px;
-  border-radius: 5px;
-  transition-duration: .3s;
-}
-.Btn:hover .sign {
-  width: 30%;
-  transition-duration: .3s;
-  padding-left: 20px;
-}
-.Btn:hover .text {
-  opacity: 1;
-  width: 70%;
-  transition-duration: .3s;
-  padding-right: 10px;
-}
-.Btn:active {
-  transform: translate(2px ,2px);
-}
-
-.rating:not(:checked) > input {
-  position: absolute;
-  appearance: none;
-}
-
-.rating:not(:checked) > label {
-  float: right;
-  cursor: pointer;
-  font-size: 30px;
-  color: #666;
-}
+.sign {width: 100%;transition-duration: .3s;display: flex;align-items: center;justify-content: center;}
+.sign svg {width: 17px;}
+.sign svg path {fill: var(--af-white);}
+.text {position: absolute;right: 0%;width: 0%;opacity: 0;color: var(--af-white);font-size: 1em;font-weight: 400;transition-duration: .3s;}
+.Btn:hover {width: 125px;border-radius: 5px;transition-duration: .3s;}
+.Btn:hover .sign {width: 30%;transition-duration: .3s;padding-left: 20px;}
+.Btn:hover .text{opacity: 1;width: 70%;transition-duration: .3s;padding-right: 10px;}
+.Btn:active {transform: translate(2px ,2px);}
+.rating:not(:checked) > input {position: absolute;appearance: none;}
+.rating:not(:checked) > label {float: right;cursor: pointer;font-size: 30px;color: #666;}
 .rating:not(:checked) > label:before {content: '★';animation: grow 0.5s linear forwards;transition: transform 0.3s;}
 .rating > input:checked + label:hover,.rating > input:checked + label:hover ~ label,.rating > input:checked ~ label:hover,.rating > input:checked ~ label:hover ~ label,.rating > label:hover ~ input:checked ~ label {color: #e58e09;}
 .rating:not(:checked) > label:hover,
@@ -145,3 +101,28 @@ mat-grid-list { background: rgb(0, 0, 0);    color: white;  }
 .signInButton span {transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);}
 .signInButton:hover svg {transform: translateX(5px) rotate(90deg);}
 .signInButton:hover span {transform: translateX(7px);}
+ .btnRegistrati  {
+    padding: 12.5px 30px;
+    border: 0;
+    border-radius: 100px;
+    background-color: #2ba8fb;
+    color: #ffffff;
+    font-weight: Bold;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+  }
+  
+  .btnRegistrati:hover {
+    background-color: #6fc5ff;
+    box-shadow: 0 0 20px #6fc5ff50;
+    transform: scale(1.1);
+  }
+  
+  .btnRegistrati:active {
+    background-color: #3d94cf;
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+    box-shadow: none;
+    transform: scale(0.98);
+  }
+ 

@@ -21,7 +21,7 @@
               "lodash",
               "localstorage-polyfill",
               "undici"
-           ],
+            ],
             "outputPath": "dist/revsite",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -114,12 +114,10 @@
             "assets": [
               "src/favicon.ico",
               "src/assets"
-             
             ],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
-          
             ],
             "scripts": [
               "./node_modules/@lottiefiles/lottie-player/dist/lottie-player.js"
@@ -128,5 +126,10 @@
         }
       }
     }
+  },
+  "cli": {
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
